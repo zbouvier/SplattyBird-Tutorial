@@ -2,7 +2,7 @@
 	"main": [{
 			"id": 0,
 			"name": "camera",
-			"camera": "true",
+			"camera": true,
 			"position": {
 				"x": 0,
 				"y": 0
@@ -19,6 +19,12 @@
 			"score": 0,
 			"player": true,
 			"strokeStyle": "red",
+			"playableArea": {
+				"x": 0,
+				"y": 0,
+				"width": 800,
+				"height": 600
+			},
 			"position": {
 				"x": 32,
 				"y": 450
@@ -73,19 +79,7 @@
 			"image": {
 				"name": "sky"
 			}
-		}, {
-			"id": 3,
-			"name": "screen",
-			"position": {
-				"x": 0,
-				"y": 0
-			},
-			"size": {
-				"width": 800,
-				"height": 600
-			}
-		},
-
+		}, 
 		{
 			"id": 4,
 			"name": "platform-1",
@@ -101,7 +95,6 @@
 			},
 			"collisions": []
 		},
-
 		{
 			"id": 5,
 			"name": "platform-2",
@@ -117,7 +110,6 @@
 			},
 			"collisions": []
 		},
-
 		{
 			"id": 6,
 			"name": "platform-3",

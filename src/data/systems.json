@@ -66,18 +66,18 @@
 			"scenes": [
 				"main"
 			]
-		}, {
+		},{
+			"name": "splat-ecs/lib/systems/constrain-to-playable-area",
+			"scenes": [
+				"main"
+			]
+		},{
 			"name": "./systems/simulation/resolve-collisions",
 			"scenes": [
 				"main"
 			]
 		}, {
 			"name": "./systems/simulation/collect-stars",
-			"scenes": [
-				"main"
-			]
-		}, {
-			"name": "./systems/simulation/keep-on-screen",
 			"scenes": [
 				"main"
 			]
@@ -94,9 +94,13 @@
 				"main"
 			]
 		},
-
 		{
 			"name": "splat-ecs/lib/systems/draw-image",
+			"scenes": [
+				"main"
+			]
+		}, {
+			"name": "splat-ecs/lib/systems/draw-rectangles",
 			"scenes": [
 				"main"
 			]
@@ -112,6 +116,11 @@
 			]
 		}, {
 			"name": "./systems/renderer/draw-score",
+			"scenes": [
+				"main"
+			]
+		}, {
+			"name": "splat-ecs/lib/systems/draw-frame-rate",
 			"scenes": [
 				"main"
 			]
