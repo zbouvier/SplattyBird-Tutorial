@@ -1,0 +1,25 @@
+{
+	"star": {
+		"name": "star",
+		"star": true,
+		"position": {
+			"x": 0,
+			"y": 0
+		},
+		"size": {
+			"width": 24,
+			"height": 22
+		},
+		"velocity": {
+			"x": 0,
+			"y": 0
+		},
+		"collisions": [],
+		"image": {
+			"name": "star",
+			"destinationWidth": 24,
+			"destinationHeight": 22
+		},
+		"gravity": 2
+	}
+}

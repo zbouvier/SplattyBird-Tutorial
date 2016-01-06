@@ -1,0 +1,138 @@
+{
+	"main": [{
+			"id": 0,
+			"name": "camera",
+			"camera": "true",
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"size": {
+				"width": 800,
+				"height": 600
+			},
+
+			"matchCanvasSize": true
+		}, {
+			"id": 1,
+			"name": "player",
+			"score": 0,
+			"player": true,
+			"strokeStyle": "red",
+			"position": {
+				"x": 32,
+				"y": 450
+			},
+			"size": {
+				"width": 32,
+				"height": 48
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"gravity": 0.5,
+			"animation": {
+				"time": 0,
+				"frame": 0,
+				"loop": true,
+				"speed": 1,
+				"name": "player-idle"
+			},
+			"image": {
+				"destinationWidth": 32,
+				"destinationHeight": 48
+			},
+			"playerController2d": {
+				"up": "up",
+				"down": "down",
+				"left": "left",
+				"right": "right"
+			},
+			"movement2d": {
+				"leftMax": -0.15,
+				"rightMax": 0.15,
+				"leftAccel": -0.02,
+				"rightAccel": 0.02
+			},
+			"friction": {
+				"x": 0.97,
+				"y": 0.97
+			},
+			"collisions": []
+		}, {
+			"id": 2,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"size": {
+				"width": 800,
+				"height": 600
+			},
+			"image": {
+				"name": "sky"
+			}
+		}, {
+			"id": 3,
+			"name": "screen",
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"size": {
+				"width": 800,
+				"height": 600
+			}
+		},
+
+		{
+			"id": 4,
+			"name": "platform-1",
+			"platform": true,
+			"color": "#194326",
+			"position": {
+				"x": 0,
+				"y": 536
+			},
+			"size": {
+				"width": 800,
+				"height": 64
+			},
+			"collisions": []
+		},
+
+		{
+			"id": 5,
+			"name": "platform-2",
+			"platform": true,
+			"color": "#194326",
+			"position": {
+				"x": -150,
+				"y": 250
+			},
+			"size": {
+				"width": 400,
+				"height": 32
+			},
+			"collisions": []
+		},
+
+		{
+			"id": 6,
+			"name": "platform-3",
+			"platform": true,
+			"color": "#194326",
+			"position": {
+				"x": 400,
+				"y": 400
+			},
+			"size": {
+				"width": 400,
+				"height": 32
+			},
+			"collisions": []
+		}
+	]
+
+}
