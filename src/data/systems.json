@@ -1,5 +1,11 @@
 {
-	"simulation": [{
+	"simulation": [
+		{
+			"name": "./systems/simulation/gravity",
+			"scenes": [
+				"main"
+			]
+		},{
 			"name": "./systems/simulation/track-last-position",
 			"scenes": [
 				"main"
@@ -15,7 +21,18 @@
 				"main"
 			]
 		}, {
+			"name": "./systems/simulation/friction",
+			"scenes": [
+				"main"
+			]
+		}, {
 			"name": "splat-ecs/lib/systems/advance-animations",
+			"scenes": [
+				"main"
+			]
+		},
+		{
+			"name": "./systems/simulation/jump",
 			"scenes": [
 				"main"
 			]
@@ -35,29 +52,13 @@
 				"main"
 			]
 		}, {
-			"name": "splat-ecs/lib/systems/apply-friction",
-			"scenes": [
-				"main"
-			]
-		}, {
 			"name": "splat-ecs/lib/systems/follow-parent",
 			"scenes": [
 				"main"
 			]
 		},
-
 		{
-			"name": "./systems/simulation/jump",
-			"scenes": [
-				"main"
-			]
-		}, {
 			"name": "./systems/simulation/run",
-			"scenes": [
-				"main"
-			]
-		}, {
-			"name": "./systems/simulation/gravity",
 			"scenes": [
 				"main"
 			]
@@ -76,8 +77,9 @@
 			"scenes": [
 				"main"
 			]
-		}, {
-			"name": "./systems/simulation/collect-stars",
+		},
+		 {
+			"name": "./systems/simulation/collect-goo",
 			"scenes": [
 				"main"
 			]
@@ -96,16 +98,6 @@
 		},
 		{
 			"name": "splat-ecs/lib/systems/draw-image",
-			"scenes": [
-				"main"
-			]
-		}, {
-			"name": "splat-ecs/lib/systems/draw-rectangles",
-			"scenes": [
-				"main"
-			]
-		}, {
-			"name": "./systems/renderer/draw-platforms",
 			"scenes": [
 				"main"
 			]

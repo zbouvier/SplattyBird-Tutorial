@@ -1,25 +1,32 @@
 {
-	"star": {
-		"name": "star",
-		"star": true,
+	"goo": {
+		"name": "goo",
+		"goo": true,
 		"position": {
 			"x": 0,
 			"y": 0
 		},
 		"size": {
-			"width": 24,
-			"height": 22
+			"width": 13,
+			"height": 18
 		},
 		"velocity": {
 			"x": 0,
 			"y": 0
 		},
 		"collisions": [],
-		"image": {
-			"name": "star",
-			"destinationWidth": 24,
-			"destinationHeight": 22
+		"animation":{
+			"time": 0,
+			"frame": 0,
+			"loop": true,
+			"speed": 1,
+			"name": "goo"
 		},
-		"gravity": 2
+		"image": {
+			"name": "goo",
+			"destinationWidth": 13,
+			"destinationHeight": 13
+		},
+		"gravity": 0.001
 	}
 }

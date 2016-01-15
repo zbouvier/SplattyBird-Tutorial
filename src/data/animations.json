@@ -14,7 +14,7 @@
 	}],
 	"player-run-left": [{
 		"filmstripFrames": 4,
-		"time": 100,
+		"time": 150,
 		"properties": {
 			"image": {
 				"name": "player-run-left",
@@ -27,7 +27,7 @@
 	}],
 	"player-run-right": [{
 		"filmstripFrames": 4,
-		"time": 100,
+		"time": 150,
 		"properties": {
 			"image": {
 				"name": "player-run-right",
@@ -35,6 +35,19 @@
 				"sourceY": 0,
 				"sourceWidth": 128,
 				"sourceHeight": 48
+			}
+		}
+	}],
+	"goo": [{
+		"filmstripFrames": 5,
+		"time": 600,
+		"properties": {
+			"image": {
+				"name": "goo",
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceWidth": 50,
+				"sourceHeight": 12
 			}
 		}
 	}]
