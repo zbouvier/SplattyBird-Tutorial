@@ -1,24 +1,23 @@
-Splat-ECS is a free and Open Source game engine project with the goal of making it easy to build games which are native to the web.
-This tutorial will guide you through the basics of using splat-ecs and by the end we will have a simple game.
+Splat ECS is a free and Open Source game engine project with the goal of making it easy to build games which are native to the web.
+This tutorial will guide you through the basics of using Splat ECS and by the end we will have a simple game.
 in this tutorial you will learn:
-* Splat-ecs recommended workflow
+* Splat ECS recommended workflow
 * The ECS mindset for building data-driven games
 * Keyboard controls
 * Sprite animation
-* Using the camera
 * Collision detection / resolution
 * Drawing text to the screen
 * Adding sounds
 
 ## Getting started with a new game project
-##### Clone the splat-ecs starter project
+##### Clone the Splat ECS starter project
 In your terminal:
 ```bash
-git clone https://github.com/SplatJS/splat-ecs-starter-project.git
+git clone https://github.com/SplatJS/Splat ECS-starter-project.git
 ```
-cd into the starter project directory and install dependencies. this will install all of the games dependencies from NPM including the splat-ecs engine.
+Navigate into the starter project directory and install dependencies. This will install all of the game's dependencies from NPM including the Splat ECS engine.
 ```bash
-cd splat-ecs-starter-project
+cd Splat ECS-starter-project
 npm install
 ```
 
@@ -40,7 +39,7 @@ change "license" to 'proprietary' unless you want your game to be free and open 
 
 
 #### Building your game
-To get a feeling for the process we will use during development open the starter project in your terminal and run
+To get a feeling for the process we will use during development open the starter project in your terminal and run:
 ```bash
 npm run build
 ```
@@ -53,42 +52,42 @@ Inside the build folder we have **index.html**, **index.js**,  **images**, and *
 
 **index.html** - The main html page your game will be displayed on, this contains the canvas element where your game is displayed.
 
-**index.js** - this is all of the code of your game, but it is also all the code for Splat-ECS and all of its dependencies, This is a 'compiled' build version so everything is smashed into a single file.
+**index.js** - this is all of the code of your game, but it is also all the code for Splat ECS and all of its dependencies, This is a 'compiled' build version so everything is smashed into a single file.
 
 **images**, **sounds** - where the assets your games uses live in the build folder.
 
 >Never edit anything in the build folder, this is the output of your game and the next time you run `npm run build` it will all be overwritten anyway.
 
-The build is only for testing your game in the browser, and distributing it to others, you will never need to do anything in the build but run it from the **index.html** file.
+The build is only for publishing your game and distributing it to others, you will never need to do anything in the build because we use webpack to run the game in the browser for testing.
 
->Due to cross site scripting security measures google chrome and potentially other browsers will not run a splat-ecs game from a folder on your computer. Our recomendation is to run your build using a small web server such as node-static or python SimpleHTTPServer. You can also open the index.html in firefox since it does not seem to have this issue.
+>Due to cross site scripting security measures google chrome and potentially other browsers will not run a Splat ECS game from a folder on your computer. Our recomendation is to run your build using a small web server such as node-static or python SimpleHTTPServer. You can also open the index.html in firefox since it does not seem to have this issue.
 
 
 #### Trying out the test project:
 
-To run a splat ECS game all you need to do is type the command `npm start` while in the root of the project directory.
+To run a Splat ECS game all you need to do is type the command `npm start` while in the root of the project directory.
 This will run webpack, which builds your game and also runs eslint which checks your JavaScript code for errors.
 
 
 ##### A note on code formatting and error checking
 
-Splat-ECS uses [eslint](http://eslint.org/) to test your game code before each time you build it, this will prevent errors or straying from the recommended JavaScript formatting rules. When you build your game you may see errors or warnings, errors prevent the game from building and must be addressed before you can continue.
+Splat ECS uses [eslint](http://eslint.org/) to test your game code before each time you build it, this will prevent errors or straying from the recommended JavaScript formatting rules. When you build your game you may see errors or warnings, errors prevent the game from building and must be addressed before you can continue.
 
 
 You should try running your game to make sure it is working before you continue.
 Open a browser and go to http://127.0.0.1:4000.
 
-The splat-ecs sample game is just a red-outlined square you can control with WASD, or arrow keys.
+The Splat ECS sample game is just a red-outlined square you can control with WASD, or arrow keys.
 Test that this is working and note that if the keys are not working you may need to click inside the browser window to give the game your 'focus'.
 
 Now that we have a sample game running we can get started.
 
 #### Understanding ECS
 
-Splat-ECS uses an Entity Component system or ECS for short, as the name implies this is a very important part of splat-ecs. ECS is at the core and you will need to understand the ECS mindset while working on your game, but don't worry you will ease into it and it will begin to become clear to you why ECS was chosen, as it is a very powerful and organized design pattern.
+Splat ECS uses an Entity Component system or ECS for short, as the name implies this is a very important part of Splat ECS. ECS is at the core and you will need to understand the ECS mindset while working on your game, but don't worry you will ease into it and it will begin to become clear to you why ECS was chosen, as it is a very powerful and organized design pattern.
 
 
-##### Splat-ECS basics
+##### Splat ECS basics
 * All objects in the game that you can interact with should be entities
 * The only way to modify an entity is to edit or delete it's components or add new components
 * Systems run in the game loop (once per frame)
@@ -118,7 +117,6 @@ the entity we have listed is
 ```json
 {
    "id": 0,
-   "name": "player",
    "player": true,
    "position": {
     "x": 100,
@@ -135,31 +133,32 @@ the entity we have listed is
   }
 ```
 
-Notice the id of 0, the name "player", the position, width, and height.
+Notice the id of 0, the "player" tag, the position, width, and height.
 
 This is our red-outlined box from before, it is a rectangle that is 100x100 and it's top left corner is drawn at x 100 and y 100 on the screen.
+Everything in our game world is based on coordinates like a graph, the top left point is x:0, y:0 af you move right the x number increases, and as you move down the y number increases.
 The position, and size objects are what we call components in the ECS world, they can be added, edited, or deleted to make an entity have different properties and/or behaviours.
 
-There is nothing in this code denoting that it is a rectangle, or that it is red-outlined, so lets move on to that next.
+There is nothing in this code denoting that it is a rectangle, or that it is red-outlined, Splat ECS handles rendering of all entities for us, and by default there is a system called `draw-rectangles` that will outline each entity in red to let us know where they are. While this system is excellent for debugging, we will want to disable it once we get futher along.
 
 #### Systems
 So we have seen entities and components so far, what about systems?
 lets open up the **systems** folder and see what is inside.
 In the **systems** folder you will see two other folders named **renderer**, and **simulation**
 
-These are the only two types of systems you will need in splat-ecs.
+These are the only two types of systems you will need in Splat ECS.
 **renderer systems** draw to the screen, and **simulation systems** do everything else.
 
-Splat-ECS uses the Common JS module format for all system modules you will be creating.
-Inside this system we will see how we format our code in Splat-ECS.
-In **sample-simulation-system.js** you will see module.exports on line 3, this is the code to export the module for use by the game project and is vital that you wrap your code in this.
+Splat ECS uses the Common JS module format for all system modules you will be creating.
+Let's open the file **src/systems/simulation/sample-simulation-system.js**
+Inside this system we will see how we format our code in Splat ECS.
+Here you will see module.exports on line 3, this is the code to export the module for use by the game project and is vital that you wrap your code in this.
 
-You will notice the arguments ecs and game, every chunk of system code in splat-ecs is run through the ECS so it must be included, game is everything in the data directory which becomes a large JavaScript object when the game is built.
+You will notice the arguments ecs and game, every chunk of system code in Splat ECS is run through the ECS so it must be included, **game** is everything in the data directory which becomes a large JavaScript object when the game is built.
 
-Line 5 is how we tell the this particular system which entities we want it to run on, in this example it will run on anything with a `player` component. Line 5 tells the ECS to run the following code on every entity that the search applied to.
-This process might seem overwhelming but it will become easier with time. It is much simpler to copy an existing system and just change the last arguments of `ecs.addEach` to what you need to target.
+This process might seem overwhelming but it will become easier with time.
 
-So to get started lets change the red-outlined square to a sprite!
+So to get started lets add a sprite for our player!
 
 #### Using images in Splat ECS
 
@@ -186,7 +185,7 @@ First we should give the player an image, to do this we need to go into /src/dat
 Inside /src/data/entities.json you will see an array called `"main: []"` this refers tot he main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as mani scenes as you want and each can have it's own set of entities.
 
 Let's find player in the list on entities and add an **image** to it!
-To add a static image to an entity in Splat ecs you use the **image** component like this:
+To add a static image to an entity in Splat ECS you use the **image** component like this:
 
 ``` json
 {
@@ -244,26 +243,26 @@ Systems are regular JavaScript files and the references to them in **/src/data/s
 
 ```json
 {
-	"name": "splat-ecs/lib/systems/constrain-to-playable-area",
+	"name": "Splat ECS/lib/systems/constrain-to-playable-area",
 	"scenes": [
 		"main"
 	]
 }
 ```
-`"name"` is the path to the system JavaScript file, if it a built in splat system it will begin with **splat-ecs/lib/systems/**, if it your own system it will be either **./systems/simulation/your-system-here** or **./systems/renderer/your-system-here**. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]-->
+`"name"` is the path to the system JavaScript file, if it a built in splat system it will begin with **Splat ECS/lib/systems/**, if it your own system it will be either **./systems/simulation/your-system-here** or **./systems/renderer/your-system-here**. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]-->
 
 So lets add the `constrain-to-playable-area` system reference after `box-collider`, here is what that will look like:
 
 ```json
 ...
 	{
-		"name": "splat-ecs/lib/systems/box-collider",
+		"name": "Splat ECS/lib/systems/box-collider",
 		"scenes": [
 			"main"
 		]
 	},
 	{
-		"name": "splat-ecs/lib/systems/constrain-to-playable-area",
+		"name": "Splat ECS/lib/systems/constrain-to-playable-area",
 		"scenes": [
 			"main"
 		]
@@ -399,7 +398,7 @@ The first step will be to change this, we want to apply this system to anything 
 Inside the ecs.addEach function you will need to get the velocity of the entity, and it's gravity. The reason I am setting the value for gravity on the player entity is so we can tweak the gravity per entity later.
 
 Lets add two variables inside our system, one to store the player's velocity, and one to store the player's gravity.
-To get values out of the entity's components in Splat ECS we use the `get` method. Since everything in the entity pool has a unique ID, the ID is what we use to tell SPlat ECS which entity we are looking for. Since the system is applying the code to each entity with a "gravity" component it acts a lot like a loop, the "entity" attribute on line 4 is the id of the current entity it is running on.
+To get values out of the entity's components in Splat ECS we use the `get` method. Since everything in the entity pool has a unique ID, the ID is what we use to tell Splat ECS which entity we are looking for. Since the system is applying the code to each entity with a "gravity" component it acts a lot like a loop, the "entity" attribute on line 4 is the id of the current entity it is running on.
 
 So let's go ahead and add those two variables with `get`:
 
@@ -928,7 +927,7 @@ Before we get into the magic of prefabs, let's add a new animation to **src/data
 
 #### Adding a new prefab
 
-Prefabs are reusable entities, think of them as a mold for stamping out a bunch of the same exact entity. To add a new prefab we add an entity to **src/data/prefabs.json** the same way we would add an entity to **src/data/entities.json**. Since prefabs are a template for creating a new entity we don't need to create a unique id for them, SPlat ECS will handle that for us. The other difference is that prefabs is not an array of entities, it is an object containing key-value pairs where the key is the name you want to give the prefab, and the value is an entity object.
+Prefabs are reusable entities, think of them as a mold for stamping out a bunch of the same exact entity. To add a new prefab we add an entity to **src/data/prefabs.json** the same way we would add an entity to **src/data/entities.json**. Since prefabs are a template for creating a new entity we don't need to create a unique id for them, Splat ECS will handle that for us. The other difference is that prefabs is not an array of entities, it is an object containing key-value pairs where the key is the name you want to give the prefab, and the value is an entity object.
 
 Here is the JSON we need for the collectable goo entities
 ```json
@@ -994,7 +993,7 @@ Those two lines are wrapped in a for loop that runs the code inside 12 times.
 
 When we revisit the game in the browser we should see 12 balls of goo fall from the sky and land on the ground directly under where they spawned.
 
-You should notice that this process seemed much eisier than when we started out, these prefabs all already have thier own animation, gravity component with a set value, and collisions component, so the systems we already have in place to handle gravity and collisions for the player effect these as well, pretty cool right!?
+You should notice that this process seemed much easier than when we started out, these prefabs all already have thier own animation, gravity component with a set value, and collisions component, so the systems we already have in place to handle gravity and collisions for the player effect these as well, pretty cool right!?
 
 But don't stop just yet - we still need to let sticky baby collect the goo, right now they just act like more platforms!
 To do this we need to add another simulation system, let's call this one **collect-go.js**
@@ -1038,9 +1037,9 @@ We now need to add this new system to **src/data/systems.json**, I recomend addi
 
 ### Keeping score
 
-We are almost done, we have a pretty real feeling game now, but I want to show you one more thing, rendering text ont he screen, and to do this we will add a score counter.
+We are almost done, we have a pretty real feeling game now, but I want to show you one more thing, rendering text on the screen, and to do this we will add a score counter.
 
-This will be our first and only render system neccessary for the tutorial. Lets create a new file inside of **src/systems/renderer/** and name it **draw-score.js**
+This will be our first and only render system neccessary for the tutorial. Lets delete the **src/systems/renderer/sample-renderer-system.js** and add a new file inside of **src/systems/renderer/**, let's name it **draw-score.js**
 
 The contents of **draw-score.js** should be as follows:
 
@@ -1074,6 +1073,16 @@ We now - you guessed it - need to add this new system to **src/data/systems.json
 ```json
 {
    "name": "./systems/renderer/draw-score",
+   "scenes": [
+	   "main"
+   ]
+}
+```
+
+Also while you have this file open, remove this sample system reference:
+```json
+{
+   "name": "./systems/renderer/",
    "scenes": [
 	   "main"
    ]
@@ -1196,7 +1205,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 ```
 
 
-And now when you play the game in your browser check to see if the sounds are working, and if they are congradulate yourself for completing this tutorial, and creating what might be your first of many agmes with SPlat ECS!
+And now when you play the game in your browser check to see if the sounds are working, and if they are congradulate yourself for completing this tutorial, and creating what might be your first of many agmes with Splat ECS!
 
 
 Thanks again for trying out Splat ECS and remember this is an open source community drive project, so feel free to help us with bug reports, fixes, or new features! The github project lives at: splatjs github.
