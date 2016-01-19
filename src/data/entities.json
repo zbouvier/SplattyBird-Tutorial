@@ -18,10 +18,9 @@
 			},
 			"camera": true
 		},
-
 		 {
 			"id": 1,
-			"name": "player",
+			"player": true,
 			"score": 0,
 			"player": true,
 			"strokeStyle": "red",
@@ -50,10 +49,6 @@
 				"loop": true,
 				"speed": 1,
 				"name": "player-idle"
-			},
-			"image": {
-				"destinationWidth": 32,
-				"destinationHeight": 48
 			},
 			"playerController2d": {
 				"up": "up",
