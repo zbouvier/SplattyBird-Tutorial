@@ -98,13 +98,30 @@ img.expand {
 .col10-10 {
   width: 100%; }
 
-.col1-2,
-.col2-4,
-.col3-6,
-.col4-8,
-.col5-10,
-.col5-10 {
-  width: 50%; }
+@media (min-width: 0px) and (max-width: 730px) {
+  .col1-2,
+  .col2-4,
+  .col3-6,
+  .col4-8,
+  .col5-10,
+  .col5-10 {
+    width: 100%; } }
+@media (min-width: 731px) and (max-width: 1024px) {
+  .col1-2,
+  .col2-4,
+  .col3-6,
+  .col4-8,
+  .col5-10,
+  .col5-10 {
+    width: 50%; } }
+@media (min-width: 1025px) {
+  .col1-2,
+  .col2-4,
+  .col3-6,
+  .col4-8,
+  .col5-10,
+  .col5-10 {
+    width: 50%; } }
 
 @media (min-width: 0px) and (max-width: 730px) {
   .col1-3,

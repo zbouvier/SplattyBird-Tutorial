@@ -71,7 +71,15 @@ img.expand{
 .col5-10,
 .col5-10{
   @extend .flexcolumn;
+  @include bp(small) {
+    width: 100%
+  }
+  @include bp(medium) {
     width: 50%;
+  }
+  @include bp(large) {
+    width: 50%;
+  }
 }
 
 .col1-3,
