@@ -1,0 +1,32 @@
+.navigation{
+	img{
+		margin-bottom: 25px;
+	}
+	@include bp(small) {
+      display: none;
+    }
+	background: $text;
+	color: $secondary;
+	ul{
+		margin: 0;
+		padding: 0;
+		a{
+			display: block;
+			width: 100%;
+			padding: 5px 10px;
+			color: $secondary;
+			text-decoration: none;
+			border: 1px solid $secondary;
+			margin: 0 0 5px 0;
+			border-radius: 4px;
+			&:hover{
+				background: $secondary;
+				color: $text;
+				border: 1px solid $text;
+			}
+			li{
+				list-style-type: none;
+			}
+		}
+	}
+}
