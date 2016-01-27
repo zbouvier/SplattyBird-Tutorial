@@ -15,11 +15,13 @@ In your terminal:
 ```bash
 git clone https://github.com/SplatJS/Splat ECS-starter-project.git
 ```
-Navigate into the starter project directory and install dependencies. This will install all of the game's dependencies from NPM including the Splat ECS engine.
+Navigate into the starter project folder and install dependencies.  engine.
 ```bash
 cd Splat ECS-starter-project
 npm install
 ```
+
+This will install all of the game's dependencies from NPM including the Splat ECS - it can take a while.
 
 Open package.json in your code editor of choice.
 change name to the name of your game (no caps or spaces)
@@ -39,7 +41,7 @@ change "license" to 'proprietary' unless you want your game to be free and open 
 
 
 #### Building your game
-To get a feeling for the process we will use during development open the starter project in your terminal and run:
+To get a feeling for the process we will use to publish our game navigate inside of the starter project in your terminal and run:
 ```bash
 npm run build
 ```
@@ -58,14 +60,15 @@ Inside the build folder we have **index.html**, **index.js**,  **images**, and *
 
 >Never edit anything in the build folder, this is the output of your game and the next time you run `npm run build` it will all be overwritten anyway.
 
-The build is only for publishing your game and distributing it to others, you will never need to do anything in the build because we use webpack to run the game in the browser for testing.
 
->Due to cross site scripting security measures google chrome and potentially other browsers will not run a Splat ECS game from a folder on your computer. Our recomendation is to run your build using a small web server such as node-static or python SimpleHTTPServer. You can also open the index.html in firefox since it does not seem to have this issue.
+#### The development process
+
+The build is only for publishing your game and distributing it to others, you will never need to do anything in the build folder because we use webpack to run the game in the browser for testing.
 
 
 #### Trying out the test project:
 
-To run a Splat ECS game all you need to do is type the command `npm start` while in the root of the project directory.
+To run a Splat ECS game all you need to do is type the command `npm start` while in the root of the project folder.
 This will run webpack, which builds your game and also runs eslint which checks your JavaScript code for errors.
 
 
@@ -154,7 +157,7 @@ Let's open the file **src/systems/simulation/sample-simulation-system.js**
 Inside this system we will see how we format our code in Splat ECS.
 Here you will see module.exports on line 3, this is the code to export the module for use by the game project and is vital that you wrap your code in this.
 
-You will notice the arguments ecs and game, every chunk of system code in Splat ECS is run through the ECS so it must be included, **game** is everything in the data directory which becomes a large JavaScript object when the game is built.
+You will notice the arguments ecs and game, every chunk of system code in Splat ECS is run through the ECS so it must be included, **game** is everything in the data folder which becomes a large JavaScript object when the game is built.
 
 This process might seem overwhelming but it will become easier with time.
 
@@ -162,12 +165,12 @@ So to get started lets add a sprite for our player!
 
 #### Using images in Splat ECS
 
-To start using images in splat it is as easy as adding them to the /src/images/ directory and then naming them in /src/data/images.json
+To start using images in splat it is as easy as adding them to the /src/images/ folder and then naming them in /src/data/images.json
 
 First download the assets pack for this game here: <link>
-Unzip splatformer_assets_pack.zip and you will find two folders, images, and sounds.
+Download [splatformer_assets_pack.zip](https://github.com/SplatJS/Splatformer-Tutorial/raw/master/splatformer_assets_pack.zip) and unzip it, you will find two folders, images, and sounds.
 
-Copy all of the images into your game `/src/images/` then open up /src/data/images.json. Here you will find an empty JSON object, we need to add images so the game can know where they are, and so we can give them names. It might be eisiest to add all of the images now, the JSON file should then look like this:
+Copy all of the images into your game `/src/images/` then open up /src/data/images.json. Here you will find an empty JSON object `{}`, we need to add images so the game can know where they are, and so we can give them names. It might be easiest to add all of the images now, the JSON file should then look like this:
 
 ``` json
 {
@@ -182,7 +185,7 @@ Copy all of the images into your game `/src/images/` then open up /src/data/imag
 ```
 
 First we should give the player an image, to do this we need to go into /src/data/entities.json.
-Inside /src/data/entities.json you will see an array called `"main: []"` this refers tot he main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as mani scenes as you want and each can have it's own set of entities.
+Inside /src/data/entities.json you will see an array called `"main: []"` this refers to the main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as mani scenes as you want and each can have it's own set of entities.
 
 Let's find player in the list on entities and add an **image** to it!
 To add a static image to an entity in Splat ECS you use the **image** component like this:
@@ -199,9 +202,9 @@ To add a static image to an entity in Splat ECS you use the **image** component 
  }
 ```
 
-Now if you check your browser you should see the red-outlined box now has sticky boy inside it! But something looks wrong... Sticky boy's image is being stretched to the size of the player entity (100x100).
+Now if you check your browser you should see the red-outlined box now has sticky baby inside it! But something looks wrong... Sticky baby's image is being stretched to the size of the player entity (100x100).
 
-<img 1>
+![Step 1 screenshot](./step_001/screenshot_001.png)
 
 By default images added to an entity will take on the position and size of the entity, to fix this we can change the size of the entity to match the image size, or add properties to the image component to make it a specific size. For this case we want to change the size of the player entity anyway so let's go ahead and do that like this:
 
@@ -219,7 +222,8 @@ By default images added to an entity will take on the position and size of the e
 ```
 
 Now the player should be the correct size, and not stretched.
-<img 2>
+
+![Step 2 screenshot](./step_002/screenshot_002.png)
 
 ### Keeping the player on the screen
 
@@ -243,26 +247,26 @@ Systems are regular JavaScript files and the references to them in **/src/data/s
 
 ```json
 {
-	"name": "Splat ECS/lib/systems/constrain-to-playable-area",
+	"name": "splat-ecs/libsystems/constrain-to-playable-area",
 	"scenes": [
 		"main"
 	]
 }
 ```
-`"name"` is the path to the system JavaScript file, if it a built in splat system it will begin with **Splat ECS/lib/systems/**, if it your own system it will be either **./systems/simulation/your-system-here** or **./systems/renderer/your-system-here**. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]-->
+`"name"` is the path to the system JavaScript file, if it a built in splat system it will begin with **splat-ecs/libsystems/**, if it your own system it will be either **./systems/simulation/your-system-here** or **./systems/renderer/your-system-here**. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]-->
 
 So lets add the `constrain-to-playable-area` system reference after `box-collider`, here is what that will look like:
 
 ```json
 ...
 	{
-		"name": "Splat ECS/lib/systems/box-collider",
+		"name": "splat-ecs/libsystems/box-collider",
 		"scenes": [
 			"main"
 		]
 	},
 	{
-		"name": "Splat ECS/lib/systems/constrain-to-playable-area",
+		"name": "splat-ecs/libsystems/constrain-to-playable-area",
 		"scenes": [
 			"main"
 		]
@@ -290,6 +294,7 @@ There is one more thing we need to do to make `constrain-to-playable-area` work,
 
   Check the game in the browser, now you should stop at an invisible wall when you hit the edges of the 800x600 rectangle.
 
+![Step 3 screenshot](./step_003/screenshot_003.png)
 
 ### Adding a background
 
@@ -300,7 +305,6 @@ It is a bit hard to see where the playable area ends, so lets go ahead and add a
 {
 	"id": 2,
 	"name": "background",
-	"platform": true,
 	"position": {
 		"x": 0,
 		"y": 0
@@ -310,21 +314,17 @@ It is a bit hard to see where the playable area ends, so lets go ahead and add a
 		"height": 600
 	},
 	"image": {
-		"name": "background"
+		"name": "sky"
 	}
 }
 ...
 ```
 The "name" component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x & y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in **src/data/images.json**.
 
-Now we should see a stripey purple background for our game, since the position and size are identical to the `playableArea` we set for the player entity, the player cannot move off the background image.
+Now we should see a stripey purple background for our game, just the way sticky baby likes it! Since the position and size are identical to the `playableArea` we set for the player entity, the player cannot move off the background image.
 
-<!--
-### Platformer behaviour
+![Step 4 screenshot](./step_004/screenshot_004.png)
 
-In a classic playformer game you cannot move in any direction as our player can currently, we need to make some adjustments to fit the genre of game we are going for.
-
-Let's start by removing the ability to move up and down. Inside of **src/data/entities.json** find the player entity and look inside the `playerController2d` component, we can delete the "up" and "down" controls and save this file. Check the game and your player should only be allowed to move left and right. -->
 
 #### gravity
 
@@ -341,51 +341,52 @@ Your player entity should now look like this:
 
 ```json
 {
-	"id": 1,
-	"player": true,
-	"strokeStyle": "red",
-	"image":{
-		"name": "player-idle"
-	},
-	"playableArea": {
-		"x": 0,
-		"y": 0,
-		"width": 800,
-		"height": 600
-	},
-	"position": {
-		"x": 100,
-		"y": 100
-	},
-	"size": {
-		"width": 32,
-		"height": 48
-	},
-	"velocity": {
-		"x": 0,
-		"y": 0
-	},
-	"gravity": 0.02,
-	"playerController2d": {
-
-		"left": "left",
-		"right": "right"
-	},
-	"movement2d": {
-		"upMax": -0.5,
-		"downMax": 0.5,
-		"leftMax": -0.5,
-		"rightMax": 0.5,
-		"upAccel": -0.02,
-		"downAccel": 0.02,
-		"leftAccel": -0.02,
-		"rightAccel": 0.02
-	},
-	"friction": {
-		"x": 0.97,
-		"y": 0.97
-	}
-}
+			"id": 1,
+			"player": true,
+			"strokeStyle": "red",
+			"image":{
+				"name": "player-idle"
+			},
+			"position": {
+				"x": 100,
+				"y": 100
+			},
+			"size": {
+				"width": 32,
+				"height": 48
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"gravity": 0.02,
+			"playerController2d": {
+				"up": "up",
+				"down": "down",
+				"left": "left",
+				"right": "right"
+			},
+			"movement2d": {
+				"upMax": -0.5,
+				"downMax": 0.5,
+				"leftMax": -0.5,
+				"rightMax": 0.5,
+				"upAccel": -0.02,
+				"downAccel": 0.02,
+				"leftAccel": -0.02,
+				"rightAccel": 0.02
+			},
+			"friction": {
+				"x": 0.97,
+				"y": 0.97
+			},
+			"playableArea": {
+				"x": 0,
+				"y": 0,
+				"width": 800,
+				"height": 600
+			}
+		}
 ```
 
 
@@ -454,7 +455,7 @@ Before:
 
 Now check the game in your browser, if everything was done correctly the player should fall out of the sky and land on the bottom of the screen, you can still of course move left and right.
 
-<img 3>
+![Step 5 screenshot](./step_005/screenshot_005.png)
 
 
 ### Jumping!
@@ -478,7 +479,7 @@ inside the file you will see inputs for the up, down, right, and left buttons. W
 
 By changing "key" you can map jump to any keyboard key.
 
-Now that we have added a new input we can create a new system for jumping. create a new file int he **src/systems/simulation** directory and name it **jump.js**
+Now that we have added a new input we can create a new system for jumping. create a new file int he **src/systems/simulation** folder and name it **jump.js**
 
 Here is the code for a very basic jumping system:
 
@@ -528,15 +529,27 @@ Next we need to register this system in **src/data/systems.json** inside the `"s
 }
 ```
 
-I reccomend adding it before `control-player`.
+I recommend adding it before `control-player`.
+
+
+We also need to adjust the vertical friction (to disable it actually). To do this we need to set the player entity's friction y to 1:
+
+```json
+"friction": {
+	"x": 0.97,
+	"y": 1
+}
+```
+
 
 Now when you view your game in the browser your player will be able to jump when space is pressed. You will probably notice that if you continue to jump you can jump in mid-air, we will fix this later. Now for the element that makes this game a platformer more than anything... platforms!
 
+![Step 6 screenshot](./step_006/screenshot_006.png)
 
 ### Adding platforms
 
 
-Let's start by adding ground, we can do this simply by creatign a new entity.
+Let's start by adding ground, we can do this simply by creating a new entity.
 
 Let's add this entity to **src/data/entities.json**:
 
@@ -548,7 +561,7 @@ Let's add this entity to **src/data/entities.json**:
 		"x": 0,
 		"y": 536
 	},
-		"size": {
+	"size": {
 		"width": 800,
 		"height": 64
 	},
@@ -583,7 +596,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 };
 ```
 
-We will also need to register this system in **src/data/systems.json**, I recomend adding it right after `gravity`  in the `"simulation":[]` array.
+We will also need to register this system in **src/data/systems.json**, I recommend adding it right before `match-canvas-size`  in the `"simulation":[]` array.
 
 ```json
 {
@@ -653,11 +666,11 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 
 This is a long one, TL;DR version of this is, if your player collides with another entity that has a "collisions" component the player will be pushed back one pixel in the appropriate direction.
 
-Be sure to add this system to **src/data/systems.json**, I recomend adding it right after `constrain-to-playable-area`  in the `"simulation":[]` array.
+Be sure to add this system to **src/data/systems.json**, I recommend adding it right after `constrain-to-playable-area`  in the `"simulation":[]` array.
 
 ```json
 {
-	"name": "./systems/simulation/track-last-position",
+	"name": "./systems/simulation/resolve-collisions",
 	"scenes": [
 		"main"
 	]
@@ -665,7 +678,7 @@ Be sure to add this system to **src/data/systems.json**, I recomend adding it ri
 ```
 
 
-The last step is to add a collisions component tot he player, we do this by adding the following to **src/data/entities.json** inside of the player entity:
+The last step is to add a collisions component to the player, we do this by adding the following to **src/data/entities.json** inside of the player entity:
 
 ```json
 "collisions":[]
@@ -674,6 +687,8 @@ The last step is to add a collisions component tot he player, we do this by addi
 
 Okay now we can go back to the browser and if everything was done correctly your player should fall and land on top of the ground entity, you can jump around and you should always land on the ground.
 
+
+![Step 7 screenshot](./step_007/screenshot_007.png)
 
 ### Adding more platforms
 
@@ -733,7 +748,11 @@ You should recognize what each of the components in these platform entities is d
 
 
 So now if you play the game in your browser you will be able to jump onto the other platforms!
-You might notice that the jumping in the game acts a bit wierd, you can continue to jump over and over and there is no way to stop sticky baby from jumping in mid-air!
+You might notice that the jumping in the game acts a bit weird, you can continue to jump over and over and there is no way to stop sticky baby from jumping in mid-air!
+
+
+![Step 8 screenshot](./step_008/screenshot_008.png)
+
 
 ###Fixing jumping
 
@@ -776,10 +795,13 @@ This is a bit complicated - so let's break it down step-by-step.
 5. if the player's top plus height (player's bottom) is less than or equal to the top  of the platform the player is standing on top of it.
 6. Let that sucker jump!
 
-So to recap - if the player is touching a platform we are checking to see if the player is above tha platform, and if it is, sticky baby can jump!
+So to recap - if the player is touching a platform we are checking to see if the player is above the platform, and if it is, sticky baby can jump!
 
 
 Now it is starting to feel like a real game, lets add something else that real games have - animation!
+
+
+![Step 9 screenshot](./step_009/screenshot_009.png)
 
 
 ### Animations
@@ -834,7 +856,7 @@ Now it is starting to feel like a real game, lets add something else that real g
 
 So what does all this data do? Let's go through it one piece at a time:
 - key - This is the name we want to give to the animation, often best to make it the same as the image name the animation uses, in our example: `player-run-right`
-- filmstripFrames - this lets the engine know how to chop up the spritesheet, it will use the width of the image and devide it by the number of frames to crerate individual images to cycle through.
+- filmstripFrames - this lets the engine know how to chop up the spritesheet, it will use the width of the image and devide it by the number of frames to create individual images to cycle through.
 - time - The time in milliseconds that each frame will last, use this to adjust the speed of the animation.
 - properties - image
 			- name - Image file to use in our example: `player-run-right`.
@@ -844,8 +866,8 @@ So what does all this data do? Let's go through it one piece at a time:
 			- sourceHeight - The height of the entire spritesheet.
 
 
-So now that we have animations defines, we need to use them.
-To change the animations the player uses we will create a new system in the **src/systems/simulation/** directory called `run.js`
+So now that we have animations defined, we need to use them.
+To change the animations the player uses we will create a new system in the **src/systems/simulation/** folder called `run.js`
 
 The contents of this system should be as follows:
 
@@ -869,13 +891,13 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 ```
 
-The `run` system we jsut created looks for any entities with `"player"` components and runs the following code on them each frame:
+The `run` system we   created looks for any entities with `"player"` components and runs the following code on them each frame:
 
 Create a variable for the animation component on the player.
-if the left button is pressed, change the player's animation name to `"player-run-left"`, else if the input named right is pressed switch to the aniamtion named `"player-run-right"`, and if neighter of those are currently pressed return to the `"player-idle"` animation.
+if the left button is pressed, change the player's animation name to `"player-run-left"`, else if the input named right is pressed switch to the animation named `"player-run-right"`, and if neither of those are currently pressed return to the `"player-idle"` animation.
 
 
-We now need to add this new system to **src/data/systems.json**, I recomend adding it right before `box-collider` in the `"simulation":[]` array.
+We now need to add this new system to **src/data/systems.json**, I recommend adding it right before `box-collider` in the `"simulation":[]` array.
 
 ```json
 {
@@ -899,6 +921,12 @@ Now we need to replace the `"image"` component on our player with an `"animation
 ```
 
 Now test out the game in the browser and sticky baby should be able to run around in style!
+
+
+
+![Step 10 screenshot](./step_010/screenshot_010.png)
+
+
 
 ### Pickups!
 
@@ -967,7 +995,7 @@ Now we need code to place the prefabs in our game, to do that we will use someth
 
 ### Enter and exit scripts
 
-	Each scene can have code that runs at the begining and end of it, these are stored in the **src/scripts/** directory and are named `scenename-enter.js` and `scenename-exit.js`(where 'scenename' is replaced with the name of the actual scene).
+	Each scene can have code that runs at the beginning and end of it, these are stored in the **src/scripts/** folder and are named `scenename-enter.js` and `scenename-exit.js`(where 'scenename' is replaced with the name of the actual scene).
 
 The sample project already has **src/scripts/main-enter.js** created for us, so we just need to modify it. Inside of the `module.exports = function` we will add code that will add new entities based on the prefab we created - to do this we will use their `game.instantiatePrefab` method.
 
@@ -977,13 +1005,7 @@ game.instantiatePrefab takes a single parameter that is the key name of the pref
 
 
 ``` JavaScript
-for (var i = 0; i < 12; i++) {
-	var goo = game.instantiatePrefab("goo");
-	game.entities.set(goo, "position", {
-		"x": i * 70,
-		"y": -13
-	});
-}
+
 ```
 
 The code above creates a variable called "goo", and stores the returned value of `game.instantiatePrefab("goo")` (the new entity id).
@@ -1021,10 +1043,10 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 The code looks for any entity with a `"player"` component and does the following:
 
 - Creates a variable for the player's collisions array,
-- Loops over all current collisions the player entity is experienceing
+- Loops over all current collisions the player entity is experiencing
 - Checks to see if any of the other entities player is colliding with have a `"goo"` component, and if they do it destroys them.
 
-We now need to add this new system to **src/data/systems.json**, I recomend adding it right after `resolve-collisions` at the end of the `"simulation":[]` array.
+We now need to add this new system to **src/data/systems.json**, I recommend adding it right after `resolve-collisions` at the end of the `"simulation":[]` array.
 
 ```json
 {
@@ -1035,11 +1057,14 @@ We now need to add this new system to **src/data/systems.json**, I recomend addi
 }
 ```
 
+![Step 11 screenshot](./step_011/screenshot_011.png)
+
+
 ### Keeping score
 
 We are almost done, we have a pretty real feeling game now, but I want to show you one more thing, rendering text on the screen, and to do this we will add a score counter.
 
-This will be our first and only render system neccessary for the tutorial. Lets delete the **src/systems/renderer/sample-renderer-system.js** and add a new file inside of **src/systems/renderer/**, let's name it **draw-score.js**
+This will be our first and only render system necessary for the tutorial. Lets delete the **src/systems/renderer/sample-renderer-system.js** and add a new file inside of **src/systems/renderer/**, let's name it **draw-score.js**
 
 The contents of **draw-score.js** should be as follows:
 
@@ -1058,7 +1083,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 };
 ```
 
-This code will run one per frame for each eneity with the `"player"` component, which should be fammiliar by now, but there is one main difference that rendering systems have - they draw things to the screen or **context**.
+This code will run one per frame for each entity with the `"player"` component, which should be familiar by now, but there is one main difference that rendering systems have - they draw things to the screen or **context**.
 
 To draw the score we want to draw normal text to the screen and to do this we can use normal html5 canvas functions. I will explain each line staring with `var score`
 
@@ -1068,7 +1093,7 @@ To draw the score we want to draw normal text to the screen and to do this we ca
 - Set the font to bold 26px arial.
 - Draw the text "Goo:" to the screen followed by the number of the player's current score at the position x:16, y:35.
 
-We now - you guessed it - need to add this new system to **src/data/systems.json**, I recomend adding it right before `draw-frame-rate` in the `"renderer":[]` array this time.
+We now - you guessed it - need to add this new system to **src/data/systems.json**, I recommend adding it right before `draw-frame-rate` in the `"renderer":[]` array this time.
 
 ```json
 {
@@ -1082,10 +1107,10 @@ We now - you guessed it - need to add this new system to **src/data/systems.json
 Also while you have this file open, remove this sample system reference:
 ```json
 {
-   "name": "./systems/renderer/",
-   "scenes": [
-	   "main"
-   ]
+	"name": "./systems/renderer/sample-renderer-system",
+	"scenes": [
+		"main"
+	]
 }
 ```
 
@@ -1126,11 +1151,15 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 Now if you try out the game in your browser you should be able to run around and collect all 12 balls of goo.
 
+
+![Step 12 screenshot](./step_012/screenshot_012.png)
+
+
 ### Sound!
 
 Sound is a huge boost to your game and adds a ton of feeling and depth to what you see and do on the screen. Sound is really easy to add in Splat ECS, but that does not mean sound is easy in games, it can often take a lot of effort to create the right sound effects, ambience, and music to make your creation feel just right.
 
-To start lets add a couple of sound effects I created with BFXR to **src/sounds/** in your game project, you can fvind them in the assets pack that the images were in.
+To start lets add a couple of sound effects I created with BFXR to **src/sounds/** in your game project, you can find them in the assets pack that the images were in.
 
 We need to add and name sounds we wish to use in the game to the **src/data/sounds.json** file like so:
 
@@ -1205,7 +1234,77 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 ```
 
 
-And now when you play the game in your browser check to see if the sounds are working, and if they are congradulate yourself for completing this tutorial, and creating what might be your first of many agmes with Splat ECS!
+And now when you play the game in your browser check to see if the sounds are working, and if they are congratulate yourself for completing this tutorial, and creating what might be your first of many games with Splat ECS!
 
+
+![Step 13 screenshot](./step_013/screenshot_013.png)
+
+### Adjusting the aspect ratio
+
+**src/data/systems.json**
+```json
+{
+			"name": "splat-ecs/lib/systems/match-center",
+			"scenes": [
+				"main"
+			]
+		}
+```
+**src/data/entities.json**
+```json
+"matchCanvasSize": true,
+			"matchCenter": {
+				"id": 2
+			}
+```
+
+**src/scripts/main-enter.js**
+```JavaScript
+"use strict";
+
+module.exports = function(game) { // eslint-disable-line no-unused-vars
+
+	game.scaleCanvasToFitRectangle(800,600);
+
+	for (var i = 0; i < 12; i++) {
+		var goo = game.instantiatePrefab("goo");
+		game.entities.set(goo, "position", {
+			"x": i * 70,
+			"y": -13
+		});
+	}
+};
+```
+
+
+![Step 14 screenshot](./step_014/screenshot_014.png)
+
+### Finishing up
+
+Removing the red outlines around entities is as simple as deleteing these lines in **src/data/systems.json**:
+
+```json
+{
+	"name": "splat-ecs/lib/systems/draw-rectangles",
+	"scenes": [
+		"main"
+	]
+}
+```
+
+Now we just need to remove the framerate display:
+
+```json
+{
+	"name": "splat-ecs/lib/systems/draw-frame-rate",
+	"scenes": [
+		"main"
+	]
+}
+```
+
+
+
+![Step 15 screenshot](./step_015/screenshot_015.png)
 
 Thanks again for trying out Splat ECS and remember this is an open source community drive project, so feel free to help us with bug reports, fixes, or new features! The github project lives at: splatjs github.
