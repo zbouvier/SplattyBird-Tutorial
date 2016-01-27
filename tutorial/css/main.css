@@ -296,8 +296,8 @@ img.expand {
   .if-large {
     display: none; } }
 .navigation {
-  background: white;
-  color: #b24330; }
+  background: #b24330;
+  color: white; }
   .navigation img {
     margin-bottom: 25px; }
   @media (min-width: 0px) and (max-width: 730px) {
@@ -310,15 +310,15 @@ img.expand {
       display: block;
       width: 100%;
       padding: 5px 10px;
-      color: #b24330;
+      color: white;
       text-decoration: none;
-      border: 1px solid #b24330;
+      border: 1px solid white;
       margin: 0 0 5px 0;
       border-radius: 4px; }
       .navigation ul a:hover {
-        background: #b24330;
-        color: white;
-        border: 1px solid white; }
+        background: white;
+        color: #b24330;
+        border: 1px solid #b24330; }
       .navigation ul a li {
         list-style-type: none; }
 
@@ -2307,9 +2307,9 @@ img.expand {
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
-  border: 1px solid white;
-  background: #b24330;
-  color: white;
+  border: 1px solid #222222;
+  background: white;
+  color: #222222;
   display: block;
   text-align: center;
   margin: 0 4px 8px 0;
@@ -2320,13 +2320,13 @@ img.expand {
   .btn .fa {
     margin: 2px 10px 2px 2px; }
   .btn:hover {
-    border: 1px solid #b24330;
-    background: white;
-    color: #b24330; }
+    border: 1px solid white;
+    background: #222222;
+    color: white; }
 
 body {
-  background: #b24330;
-  color: white;
+  background: white;
+  color: #222222;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   font-feature-settings: "kern", "liga", "pnum";
   font-size: 1em;
@@ -2350,7 +2350,7 @@ h2 {
   margin: 36px 0 9px 0; }
 
 a {
-  color: white; }
+  color: #222222; }
 
 .sub {
   font-size: 1.2em;
@@ -2359,7 +2359,7 @@ a {
   padding-bottom: 1px;
   margin-bottom: 26px;
   display: block;
-  border-bottom: 1px solid white; }
+  border-bottom: 1px solid #222222; }
 
 .checkpoint {
   margin-bottom: 100px; }
@@ -2370,7 +2370,10 @@ a {
       margin: 2px 10px 2px 2px; }
   .checkpoint .sub {
     font-size: 1em;
-    color: white;
+    color: #626262;
     padding: 0;
     margin: 0 0 0 40px;
     border: 0; }
+
+.content p, .content pre, .content li, .content img {
+  max-width: 750px; }
