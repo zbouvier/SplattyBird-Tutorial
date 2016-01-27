@@ -757,7 +757,7 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 ###Fixing jumping
 
 
-To fix this we need to edit the **src//systems/simulation/jump.js** system a bit, and now that we have platforms it makes sence to only let the player jump if the player is standing on top of a platform. Here is the code we use to add that feature and how the system should look after it is added:
+To fix this we need to edit the **src//systems/simulation/jump.js** system a bit, and now that we have platforms it makes since to only let the player jump if the player is standing on top of a platform. Here is the code we use to add that feature and how the system should look after it is added:
 
 ```JavaScript
 "use strict";
@@ -801,7 +801,7 @@ So to recap - if the player is touching a platform we are checking to see if the
 Now it is starting to feel like a real game, lets add something else that real games have - animation!
 
 
-![Step 9 screenshot](./step_009/screenshot_009.png)
+
 
 
 ### Animations
@@ -1241,23 +1241,31 @@ And now when you play the game in your browser check to see if the sounds are wo
 
 ### Adjusting the aspect ratio
 
+You will notice that our game is stuck up in the top left corner of a full-screen black canvas. We want the game to scale depending ont he browser window size so that the whole game is always in view (not cut off) and the artwork is always the correct aspect ratio.
+
+To do this we need to add another reference to a built in Splat ECS system called `match-center` to **src/data/systems.json**.
+
 **src/data/systems.json**
 ```json
 {
-			"name": "splat-ecs/lib/systems/match-center",
-			"scenes": [
-				"main"
-			]
-		}
-```
-**src/data/entities.json**
-```json
-"matchCanvasSize": true,
-			"matchCenter": {
-				"id": 2
-			}
+	"name": "splat-ecs/lib/systems/match-center",
+	"scenes": [
+		"main"
+	]
+}
 ```
 
+`match-center` lets you add a `matchCenter` component to any entity and provide it the id of any other entity. The system will center the entity whose id you provide on the first entity. In our case we are going to add the `matchCenter` componet to our camera entity, and tell id 2, or the background image to center on it. We also need to add another component to the camera called `matchCanvasSize` this will make our 800 x 600 game scale to the size of the browser window without getting cut off, sicne we are not drawing anything outside of the 800x600 area the game will effectively have letterboxing on the right and left sides.
+
+**src/data/entities.json** inside the camera entity
+```json
+"matchCanvasSize": true,
+"matchCenter": {
+	"id": 2
+}
+```
+
+Nex we need to add one line to **src/scripts/main-enter.js**, this is a special method that will tell Splat ECS the size we want our game to be.
 **src/scripts/main-enter.js**
 ```JavaScript
 "use strict";
@@ -1279,9 +1287,9 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 
 ![Step 14 screenshot](./step_014/screenshot_014.png)
 
-### Finishing up
+### Removing debugging systems
 
-Removing the red outlines around entities is as simple as deleteing these lines in **src/data/systems.json**:
+Removing the red outlines around entities is as simple as deleting these lines in **src/data/systems.json**:
 
 ```json
 {
@@ -1292,7 +1300,7 @@ Removing the red outlines around entities is as simple as deleteing these lines 
 }
 ```
 
-Now we just need to remove the framerate display:
+Now we just need to remove the frame rate display:
 
 ```json
 {
@@ -1303,8 +1311,9 @@ Now we just need to remove the framerate display:
 }
 ```
 
-
+Now when you check the game in your browser the red outlines and fps display should be gone, leaving behind your great looking game.
+You have completed the tutorial, great job!
 
 ![Step 15 screenshot](./step_015/screenshot_015.png)
 
-Thanks again for trying out Splat ECS and remember this is an open source community drive project, so feel free to help us with bug reports, fixes, or new features! The github project lives at: splatjs github.
+Thanks again for trying out Splat ECS and remember this is an open source community drive project, so feel free to help us with bug reports, fixes, or new features! The github project lives at: <a href="https://github.com/SplatJS/splat-ecs">Splat ECS github</a>.
