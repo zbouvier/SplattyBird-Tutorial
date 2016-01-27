@@ -5,8 +5,8 @@
 	@include bp(small) {
       display: none;
     }
-	background: $text;
-	color: $secondary;
+	background: $red;
+	color: white;
 	ul{
 		margin: 0;
 		padding: 0;
@@ -14,15 +14,15 @@
 			display: block;
 			width: 100%;
 			padding: 5px 10px;
-			color: $secondary;
+			color: white;
 			text-decoration: none;
-			border: 1px solid $secondary;
+			border: 1px solid white;
 			margin: 0 0 5px 0;
 			border-radius: 4px;
 			&:hover{
-				background: $secondary;
-				color: $text;
-				border: 1px solid $text;
+				background: white;
+				color: $red;
+				border: 1px solid $red;
 			}
 			li{
 				list-style-type: none;

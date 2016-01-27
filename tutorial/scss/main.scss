@@ -66,3 +66,9 @@ a{
 	}
 	margin-bottom: 100px;
 }
+
+.content{
+	p, pre, li, img{
+		max-width: 750px;
+	}
+}

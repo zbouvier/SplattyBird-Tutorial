@@ -746,7 +746,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 velocity.y  = -1.2;
 </code></pre>
 
-The reason we are setting the velocity y (up/down axis) to -1.2 is so the player will go up, gravity will take care of bringing the play back down to earth and the whole process happens again the next time the jump button is pressed.</p>
+<p>The reason we are setting the velocity y (up/down axis) to -1.2 is so the player will go up, gravity will take care of bringing the play back down to earth and the whole process happens again the next time the jump button is pressed.</p>
 
 <p>Next we need to register this system in <strong>src/data/systems.json</strong> inside the <code>"simulation": []</code> array because it is a simulation system. We can add it using the following:</p>
 
@@ -831,7 +831,7 @@ The reason we are setting the velocity y (up/down axis) to -1.2 is so the player
 
 <p>To resolve collisions we need two new systems, <code>track-last-position</code> and <code>resolve-collisions</code>, both of which we will need to add manually to our project.</p>
 
-<code>track-last-position</code> runs each frame on every entity with a position and records it in a component called "lastPosition". This is important for know what position to restore the entity to after it intersects another.</p>
+<p><code>track-last-position</code> runs each frame on every entity with a position and records it in a component called "lastPosition". This is important for know what position to restore the entity to after it intersects another.</p>
 
 <p>To add the <code>track-last-position</code> system we need to create a new file in <strong>src/systems/simulation/</strong> named <strong>track-last-position.js</strong>, the contents of this file should be:</p>
 
@@ -857,7 +857,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 }
 </code></pre>
 
-Every time you add a new system you should check to make sure everything is working, so go ahead and look at the game in your browser and make sure everything is working. Nothing should have changed yet, but just be sure there are no new typos or bugs.</p>
+<p>Every time you add a new system you should check to make sure everything is working, so go ahead and look at the game in your browser and make sure everything is working. Nothing should have changed yet, but just be sure there are no new typos or bugs.</p>
 
 <p>Next we need to do the same for <code>resolve-collisions</code>, create a new file in <strong>src/systems/simulation/</strong> named <strong>resolve-collisions.js</strong>, the contents of this file should be:</p>
 
@@ -1109,11 +1109,11 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Animation</h2>
 <em class="sub">Motion to add emotion</em>
 
-Splat ECS has built in support for sprite animation and if you setup your artwork to work with the default format it can be super easy to get animated sprites working quickly.
+<p>Splat ECS has built in support for sprite animation and if you setup your artwork to work with the default format it can be super easy to get animated sprites working quickly.</p>
 
-The first animations we will add will be for the player. Sticky baby can currently move left and right but the image stays the same. Let's fix that.
+<p>The first animations we will add will be for the player. Sticky baby can currently move left and right but the image stays the same. Let's fix that.</p>
 
-To add animations we must edit **src/data/animations.json**. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:
+<p>To add animations we must edit **src/data/animations.json**. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:</p>
 
 <pre><code class="json">
 "player-idle": [{
@@ -1656,7 +1656,7 @@ for (var i = 0; i &lt; entityCollisions.length; i++) {
 }
 </code></pre>
 
-<code>match-center</code> lets you add a <code>matchCenter</code> component to any entity and provide it the id of any other entity. The system will center the entity whose id you provide on the first entity. In our case we are going to add the <code>matchCenter</code> componet to our camera entity, and tell id 2, or the background image to center on it. We also need to add another component to the camera called <code>matchCanvasSize</code> this will make our 800 x 600 game scale to the size of the browser window without getting cut off, sicne we are not drawing anything outside of the 800x600 area the game will effectively have letterboxing on the right and left sides.</p>
+<p><code>match-center</code> lets you add a <code>matchCenter</code> component to any entity and provide it the id of any other entity. The system will center the entity whose id you provide on the first entity. In our case we are going to add the <code>matchCenter</code> componet to our camera entity, and tell id 2, or the background image to center on it. We also need to add another component to the camera called <code>matchCanvasSize</code> this will make our 800 x 600 game scale to the size of the browser window without getting cut off, sicne we are not drawing anything outside of the 800x600 area the game will effectively have letterboxing on the right and left sides.</p>
 
 <p><strong>src/data/entities.json</strong> inside the camera entity
 <pre><code class="json">
