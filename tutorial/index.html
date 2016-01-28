@@ -33,6 +33,7 @@
 				<a href="#sound"><li>Sound</li></a>
 				<a href="#aspect"><li>Adjusting the aspect ratio</li></a>
 				<a href="#debug"><li>Removing debugging systems</li></a>
+				<a href="#publishing"><li>Sharing and publishing</li></a>
 			</ul>
 		</div> <!-- module -->
 	</div> <!-- end col1-4 -->
@@ -108,72 +109,6 @@ npm install
 </div>
 
 
-<div class="flexrow">
-	<div class="col1-2">
-		<div class="module">
-			<img src="img/packagejson.jpg" class="expand"/>
-		</div>
-	</div>
-	<div class="col1-2">
-		<div class="module">
-			<p>Open package.json in your code editor of choice.
-			change name to the name of your game (no caps or spaces)</p>
-
-			<p>edit "description" to describe your game</p>
-
-			<p>"repository" -> "url" to your github project url (if you have one)</p>
-
-			<p>"bugs" -> "url" to your github project url (if you have one)</p>
-
-			<p>"homepage" to your game project's website (if you have one)</p>
-
-			<p>change "author" to your name</p>
-
-			<p>change "license" to 'proprietary' unless you want your game to be free and open source.</p>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-<h3>Building your game</h3>
-
-<p>To get a feeling for the process we will use to publish our game navigate inside of the starter project in your terminal and run:
-<code>bash
-npm run build
-</code>
-This is the build command that creates a fresh 'build' of your game which you can try in your browser or distribute on the web, once this command is run the only thing you need to play your game is the 'build' folder and its contents.</p>
-
-<blockquote>
-  <p>For example if you were submitting your game to itch.io you could zip and rename the build folder and upload that as your game.</p>
-</blockquote>
-
-
-<div class="flexrow">
-	<div class="col1-2">
-		<div class="module">
-
-			<p>Inside the build folder we have <strong>index.html</strong>, <strong>index.js</strong>,  <strong>images</strong>, and <strong>sounds</strong>.</p>
-
-			<p><strong>index.html</strong> - The main html page your game will be displayed on, this contains the canvas element where your game is displayed.</p>
-
-			<p><strong>index.js</strong> - this is all of the code of your game, but it is also all the code for Splat ECS and all of its dependencies, This is a 'compiled' build version so everything is smashed into a single file.</p>
-
-			<p><strong>images</strong>, <strong>sounds</strong> - where the assets your games uses live in the build folder.</p>
-
-			<blockquote>
-			  <p>Never edit anything in the build folder, this is the output of your game and the next time you run <code>npm run build</code> it will all be overwritten anyway.</p>
-			</blockquote>
-		</div>
-	</div>
-	<div class="col1-2">
-		<div class="module">
-			<img src="img/build.jpg" class="expand"/>
-		</div>
-	</div>
-</div>
 
 
 
@@ -208,6 +143,10 @@ Test that this is working and note that if the keys are not working you may need
 <em class="sub">The foundational concepts behind Splat ECS</em>
 
 <p>Splat ECS uses an Entity Component system or ECS for short, as the name implies this is a very important part of Splat ECS. ECS is at the core and you will need to understand the ECS mindset while working on your game, but don't worry you will ease into it and it will begin to become clear to you why ECS was chosen, as it is a very powerful and organized design pattern.</p>
+
+Entities
+Components
+Systems
 
 <h5>Splat ECS basics</h5>
 
@@ -1760,6 +1699,96 @@ You have completed the tutorial, great job!</p>
 
 
 <p>Thanks again for trying out Splat ECS and remember this is an open source community drive project, so feel free to help us with bug reports, fixes, or new features! The github project lives at: <a href="https://github.com/SplatJS/splat-ecs">Splat ECS github</a>.</p>
+
+
+
+
+<a name="publishing"></a>
+<h2>Sharing Publishing your game</h2>
+
+<p>Even though this is just a tutorial game I thought it would be usefull to include a few steps related to sharing or publishing a game created with Splat ECS.
+</p>
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<img src="img/packagejson.jpg" class="expand"/>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<h3>If you are using github</h3>
+			<p>The one file that is not in <strong>src/</strong> that you will need to edit is the <strong>package.json</strong>. Open package.json in your code editor.
+			Change <code>name</code> to the name of your game (no caps or spaces)</p>
+
+			<p>edit <code>description</code> to describe your game</p>
+
+			<p><code>repository</code> -> "url" to your github project url (if you have one)</p>
+
+			<p><code>bugs</code> -> "url" to your github project url (if you have one)</p>
+
+			<p><code>homepage</code> to your game project's website (if you have one)</p>
+
+			<p>change <code>author</code> to your name</p>
+
+			<p>change <code>license</code> to 'proprietary' unless you want your game to be free and open source.</p>
+		</div>
+	</div>
+</div>
+
+
+
+
+<h3>Building your game</h3>
+
+<p>To get a feeling for the process we will use to publish our game navigate inside of the starter project in your terminal and run:
+<code>bash
+npm run build
+</code>
+This is the build command that creates a fresh 'build' of your game which you can try in your browser or distribute on the web, once this command is run the only thing you need to play your game is the 'build' folder and its contents.</p>
+
+<blockquote>
+  <p>For example if you were submitting your game to itch.io you could zip and rename the build folder and upload that as your game.</p>
+</blockquote>
+
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+
+			<p>Inside the build folder we have <strong>index.html</strong>, <strong>index.js</strong>,  <strong>images</strong>, and <strong>sounds</strong>.</p>
+
+			<p><strong>index.html</strong> - The main html page your game will be displayed on, this contains the canvas element where your game is displayed.</p>
+
+			<p><strong>index.js</strong> - this is all of the code of your game, but it is also all the code for Splat ECS and all of its dependencies, This is a 'compiled' build version so everything is smashed into a single file.</p>
+
+			<p><strong>images</strong>, <strong>sounds</strong> - where the assets your games uses live in the build folder.</p>
+
+			<blockquote>
+			  <p>Never edit anything in the build folder, this is the output of your game and the next time you run <code>npm run build</code> it will all be overwritten anyway.</p>
+			</blockquote>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<img src="img/build.jpg" class="expand"/>
+		</div>
+	</div>
+</div>
+
+
+<h3>Hosting your came on itch.io</h3>
+<strong>coming soon</strong>
+
+<h3>Setting up your game for the Chrome Web Store</h3>
+<strong>coming soon</strong>
+
+<h3>Creating a Mac build with <a href="http://electron.atom.io/" target="_blank">Electron</a></h3>
+<strong>coming soon</strong>
+
+<h3>Creating a Linux build with <a href="http://electron.atom.io/" target="_blank">Electron</a></h3>
+<strong>coming soon</strong>
+
 </div> <!-- module -->
 </div><!-- end col2-3 -->
 </div><!-- end flexrow -->
