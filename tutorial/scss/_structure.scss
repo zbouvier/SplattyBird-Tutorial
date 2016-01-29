@@ -28,7 +28,7 @@ body{
 }
 
 img.expand{
-  max-width: 100%;
+	width: 100%;
 }
 
 .flexrow{
@@ -75,7 +75,7 @@ img.expand{
     width: 100%
   }
   @include bp(medium) {
-    width: 50%;
+    width: 100%;
   }
   @include bp(large) {
     width: 50%;
