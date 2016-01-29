@@ -16,7 +16,9 @@
 	<div class="col1-4">
 		<div class="navigation module">
 			<img class="expand" src="img/logo.png"/>
-			<ul>
+			<button class="sectionsBtn tab selected">Sections</button><button class="checkpointsBtn tab">Checkpoints</button>
+
+			<ul class="sections">
 				<a href="#intro"><li>Intro</li></a>
 				<a href="#gettingStarted"><li>Splat ECS Starter Project</li></a>
 				<a href="#understandingECS"><li>Understanding ECS</li></a>
@@ -36,15 +38,36 @@
 				<a href="#debug"><li>Removing debugging systems</li></a>
 				<a href="#publishing"><li>Sharing and publishing</li></a>
 			</ul>
+			<ul class="checkpoints" style="display:none;">
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_001/src"><li><i class="fa fa-code"></i> 1. Sticky baby lives!</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_002/src"><li><i class="fa fa-code"></i> 2. Sizing things up
+</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_003/src"><li><i class="fa fa-code"></i> 3. Knowing your boundaries</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_004/src"><li><i class="fa fa-code"></i> 4. A change of scenery</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_005/src"><li><i class="fa fa-code"></i> 5. Weighing you down</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_006/src"><li><i class="fa fa-code"></i> 6. A leap of faith</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_007/src"><li><i class="fa fa-code"></i> 7. A firm foundation</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_008/src"><li><i class="fa fa-code"></i> 8. Following the rules</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_009/src"><li><i class="fa fa-code"></i> 9. Feeling jumpy</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_010/src"><li><i class="fa fa-code"></i> 10. Motion to add emotion</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_011/src"><li><i class="fa fa-code"></i> 11. Feeling prefabulous</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_012/src"><li><i class="fa fa-code"></i> 12. Competitive gaming
+</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_013/src"><li><i class="fa fa-code"></i> 13. Hearing is believing</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_014/src"><li><i class="fa fa-code"></i> 14. Making things presentable</li></a>
+				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_015/src"><li><i class="fa fa-code"></i> 15. The finished product</li></a>
+			</ul>
 		</div> <!-- module -->
 	</div> <!-- end col1-4 -->
-<div class="col3-4" style="height: 100vh; overflow-x: scroll;">
+<div class="col3-4" style="height: 100vh; overflow-x: scroll; position: relative;">
+<header>
+		<h2 >Splatformer Tutorial</h2>
+	<em class="sub whiteText">A brief intro to the Splat ECS Game Engine</em>
+
+</header>
 <div class="content module">
 
 <a name="intro"></a>
-<h2>Splatformer Tutorial</h2>
-<em class="sub">A brief intro to the Splat ECS Game Engine</em>
-
 
 <div class="flexrow">
 	<div class="col1-2">
@@ -84,27 +107,25 @@
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-
-		Here is what we need for this section, I will show you how to get each item if you don't already have it.
-
-		<ul>
-			<li> Browser</li>
-			<li> Text editor</li>
-			<li> Terminal</li>
-			<li> Node.js</li>
-			<li> Splat ECS Engine</li>
-		</ul>
-
-
+			<video src="mov/finished-game.mp4" autoplay="true" loop="true" style="max-width: 100%;"></video>
 		</div>
 	</div>
 	<div class="col1-2">
 		<div class="module">
-
+		<p>Here is a preview of the game we are going to create in this tutorial. The game is a simple platformer where you use arrow keys to move the player and spacebar to jump, the goal is to collect  the green balls littered  throughout the level to increase your score.</p>
 		</div>
 	</div>
 </div>
+<p>To get started on building our game there is a little bit of setup we need to do first, let's begin.
+Here is what we need for the setup phase, I will show you how to get each item if you don't already have it.</p>
 
+<ul>
+	<li> Browser</li>
+	<li> Text editor</li>
+	<li> Terminal</li>
+	<li> Node.js</li>
+	<li> Splat ECS Engine</li>
+</ul>
 
 <h4> Browser</h4>
 
@@ -400,6 +421,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 
 <img src="../step_001/screenshot_001.png" class="expand" alt="Step 1 screenshot" title="" />
 
+<a name="cp1"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -437,6 +459,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 
 <p><img src="../step_002/screenshot_002.png" class="expand" alt="Step 2 screenshot" title="" /></p>
 
+<a name="cp2"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -532,6 +555,7 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 
 <p><img src="../step_003/screenshot_003.png" class="expand" alt="Step 3 screenshot" title="" /></p>
 
+<a name="cp3"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -577,12 +601,13 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 ...
 </code></pre>
 
-The "name" component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in <strong>src/data/images.json</strong>.</p>
+<p>The <code>name</code> component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in <strong>src/data/images.json</strong>.</p>
 
 <p>Now we should see a stripey purple background for our game, just the way sticky baby likes it! Since the position and size are identical to the <code>playableArea</code> we set for the player entity, the player cannot move off the background image.</p>
 
 <p><img src="../step_004/screenshot_004.png" class="expand" alt="Step 4 screenshot" title="" /></p>
 
+<a name="cp4"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -732,6 +757,7 @@ Before:
 
 <p><img src="../step_005/screenshot_005.png" class="expand" alt="Step 5 screenshot" title="" /></p>
 
+<a name="cp5"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -843,6 +869,7 @@ velocity.y  = -1.2;
 
 <p><img src="../step_006/screenshot_006.png" class="expand" alt="Step 6 screenshot" title="" /></p>
 
+<a name="cp6"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1005,6 +1032,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 
 <p><img src="../step_007/screenshot_007.png" class="expand" alt="Step 7 screenshot" title="" /></p>
 
+<a name="cp7"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1089,6 +1117,7 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 
 <p><img src="../step_008/screenshot_008.png" class="expand" alt="Step 8 screenshot" title="" /></p>
 
+<a name="cp8"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1158,7 +1187,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>Now it is starting to feel like a real game, let's add something else that real games have - animation!</p>
 
-
+<a name="cp9"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1295,6 +1324,7 @@ if the left button is pressed, change the player's animation name to <code>"play
 
 <img src="../step_010/screenshot_010.png" class="expand" alt="Step 10 screenshot" />
 
+<a name="cp10"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1458,6 +1488,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p><img src="../step_011/screenshot_011.png" class="expand" alt="Step 11 screenshot" title="" /></p>
 
+<a name="cp11"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1576,6 +1607,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p><img src="../step_012/screenshot_012.png" class="expand" alt="Step 12 screenshot" title="" /></p>
 
+<a name="cp12"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1683,6 +1715,7 @@ for (var i = 0; i < entityCollisions.length; i++) {
 
 <p><img src="../step_013/screenshot_013.png" class="expand" alt="Step 13 screenshot" title="" /></p>
 
+<a name="cp13"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1756,6 +1789,7 @@ for (var i = 0; i < 12; i++) {
 
 <p><img src="../step_014/screenshot_014.png" class="expand" alt="Step 14 screenshot" title="" /></p>
 
+<a name="cp14"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1807,6 +1841,8 @@ You have completed the tutorial, great job!</p>
 
 <p><img src="../step_015/screenshot_015.png" class="expand" alt="Step 15 screenshot" title="" /></p>
 
+
+<a name="cp15"></a>
 <div class="flexrow checkpoint">
 	<div class="col1-2">
 		<div class="module">
@@ -1923,6 +1959,22 @@ This is the build command that creates a fresh 'build' of your game which you ca
 
 <script>hljs.initHighlightingOnLoad();</script>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(".sectionsBtn").click(function(){
+	$(".checkpoints").hide();
+	$(".sections").show();
+	$(".sectionsBtn").addClass("selected");
+	$(".checkpointsBtn").removeClass("selected");
+});
+$(".checkpointsBtn").click(function(){
+	$(".sections").hide();
+	$(".checkpoints").show();
+	$(".sectionsBtn").removeClass("selected");
+	$(".checkpointsBtn").addClass("selected");
+});
+
+</script>
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

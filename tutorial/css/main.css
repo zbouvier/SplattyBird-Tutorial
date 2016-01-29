@@ -2324,6 +2324,24 @@ img.expand {
     background: #222222;
     color: white; }
 
+.tab {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px 4px 0 0;
+  border: 0;
+  font-size: 1em;
+  background: #d9d9d9;
+  color: #7b7b7b;
+  display: inline-block;
+  text-align: center;
+  margin: 0 2px;
+  cursor: pointer;
+  outline: none;
+  max-width: 300px; }
+  .tab.selected {
+    background: white;
+    color: #222222; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   font-size: 1em;
@@ -2363,6 +2381,15 @@ a {
   margin-bottom: 26px;
   display: block;
   border-bottom: 1px solid #222222; }
+
+header {
+  background: url("../img/banner.jpg") no-repeat right;
+  background-size: cover;
+  padding: 25px;
+  min-height: 200px; }
+  header h2, header .sub {
+    color: white;
+    border: none; }
 
 body {
   background: white;
