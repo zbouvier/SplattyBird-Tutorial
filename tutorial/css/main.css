@@ -2382,6 +2382,15 @@ a {
   display: block;
   border-bottom: 1px solid #222222; }
 
+header {
+  background: url("../img/banner.jpg") no-repeat right;
+  background-size: cover;
+  padding: 25px;
+  min-height: 200px; }
+  header h2, header .sub {
+    color: white;
+    border: none; }
+
 body {
   background: white;
   color: #222222;

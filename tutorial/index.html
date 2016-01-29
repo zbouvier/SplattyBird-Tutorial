@@ -59,13 +59,15 @@
 			</ul>
 		</div> <!-- module -->
 	</div> <!-- end col1-4 -->
-<div class="col3-4" style="height: 100vh; overflow-x: scroll;">
+<div class="col3-4" style="height: 100vh; overflow-x: scroll; position: relative;">
+<header>
+		<h2 >Splatformer Tutorial</h2>
+	<em class="sub whiteText">A brief intro to the Splat ECS Game Engine</em>
+
+</header>
 <div class="content module">
 
 <a name="intro"></a>
-<h2>Splatformer Tutorial</h2>
-<em class="sub">A brief intro to the Splat ECS Game Engine</em>
-
 
 <div class="flexrow">
 	<div class="col1-2">
@@ -105,27 +107,25 @@
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-
-		Here is what we need for this section, I will show you how to get each item if you don't already have it.
-
-		<ul>
-			<li> Browser</li>
-			<li> Text editor</li>
-			<li> Terminal</li>
-			<li> Node.js</li>
-			<li> Splat ECS Engine</li>
-		</ul>
-
-
+			<video src="mov/finished-game.mp4" autoplay="true" loop="true" style="max-width: 100%;"></video>
 		</div>
 	</div>
 	<div class="col1-2">
 		<div class="module">
-
+		<p>Here is a preview of the game we are going to create in this tutorial. The game is a simple platformer where you use arrow keys to move the player and spacebar to jump, the goal is to collect  the green balls littered  throughout the level to increase your score.</p>
 		</div>
 	</div>
 </div>
+<p>To get started on building our game there is a little bit of setup we need to do first, let's begin.
+Here is what we need for the setup phase, I will show you how to get each item if you don't already have it.</p>
 
+<ul>
+	<li> Browser</li>
+	<li> Text editor</li>
+	<li> Terminal</li>
+	<li> Node.js</li>
+	<li> Splat ECS Engine</li>
+</ul>
 
 <h4> Browser</h4>
 
@@ -601,7 +601,7 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 ...
 </code></pre>
 
-The "name" component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in <strong>src/data/images.json</strong>.</p>
+<p>The <code>name</code> component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in <strong>src/data/images.json</strong>.</p>
 
 <p>Now we should see a stripey purple background for our game, just the way sticky baby likes it! Since the position and size are identical to the <code>playableArea</code> we set for the player entity, the player cannot move off the background image.</p>
 
