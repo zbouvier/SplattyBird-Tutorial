@@ -504,27 +504,27 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 
 <pre><code class="json">
 <em>{
-    "name": "splat-ecs/libsystems/constrain-to-playable-area",
+    "name": "splat-ecs/lib/systems/constrain-to-playable-area",
     "scenes": [
         "main"
     ]
 }</em>
 </code></pre>
 
-<code>"name"</code> is the path to the system JavaScript file, if it a built in splat system it will begin with <strong>splat-ecs/libsystems/</strong>, if it your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
+<code>"name"</code> is the path to the system JavaScript file, if it a built in splat system it will begin with <strong>splat-ecs/lib/systems/</strong>, if it your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
 
 <p>So let's add the <code>constrain-to-playable-area</code> system reference after <code>box-collider</code>, here is what that will look like:</p>
 
 <pre><code class="json">
 ...
     {
-        "name": "splat-ecs/libsystems/box-collider",
+        "name": "splat-ecs/lib/systems/box-collider",
         "scenes": [
             "main"
         ]
     },
     <em>{
-        "name": "splat-ecs/libsystems/constrain-to-playable-area",
+        "name": "splat-ecs/lib/systems/constrain-to-playable-area",
         "scenes": [
             "main"
         ]
