@@ -830,7 +830,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <ul>
 <li>game.input.button("name-here") true if button is currently down (each frame).</li>
 <li>game.input.buttonPressed("name-here") true for one frame at the beginning of the button press.</li>
-<li>game.input.buttonDown("name-here")true for one frame when the button is released.</li>
+<li>game.input.buttonReleased("name-here") true for one frame when the button is released.</li>
 </ul>
 
 <p>The reason I chose <code>buttonPressed</code> is because it will only jump once when the button is first pressed instead of continually jumping.</p>
@@ -1445,9 +1445,9 @@ The next line <code>game.entities.set</code> will give the brand new entity it's
 <p>You should notice that this process seemed much easier than when we started out, these prefabs all already have thier own animation, gravity component with a set value, and collisions component, so the systems we already have in place to handle gravity and collisions for the player effect these as well, pretty cool right!?</p>
 
 <p>But don't stop just yet - we still need to let sticky baby collect the goo, right now they just act like more platforms!
-To do this we need to add another simulation system, let's call this one <strong>collect-go.js</strong></p>
+To do this we need to add another simulation system, let's call this one <strong>collect-goo.js</strong></p>
 
-<p>Create a new file inside of <strong>src/systems/simulation/</strong> and name it <strong>collect-go.js</strong>, the contents of the file should be as follows:</p>
+<p>Create a new file inside of <strong>src/systems/simulation/</strong> and name it <strong>collect-goo.js</strong>, the contents of the file should be as follows:</p>
 
 <pre><code class="javascript">
 <em>"use strict";
