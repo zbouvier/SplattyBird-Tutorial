@@ -511,7 +511,7 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 }</em>
 </code></pre>
 
-<code>"name"</code> is the path to the system JavaScript file, if it a built in splat system it will begin with <strong>splat-ecs/lib/systems/</strong>, if it your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
+<code>"name"</code> is the path to the system JavaScript file, if it is a built in splat system it will begin with <strong>splat-ecs/lib/systems/</strong>, if it your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
 
 <p>So let's add the <code>constrain-to-playable-area</code> system reference after <code>box-collider</code>, here is what that will look like:</p>
 
@@ -718,6 +718,8 @@ To get values out of the entity's components in Splat ECS we use the <code>get</
 <em>velocity.y += gravity;</em>
 </code></pre>
 
+<p> We are using += to add gravity because higher numbers on the y axis are lower on the screen.</p>
+
 <p>So here is what the entire file should look like:</p>
 
 <pre><code class="hljs javascript">
@@ -801,7 +803,7 @@ inside the file you will see inputs for the up, down, right, and left buttons. W
 
 <p>By changing "key" you can map jump to any keyboard key.</p>
 
-<p>Now that we have added a new input we can create a new system for jumping. create a new file int he <strong>src/systems/simulation</strong> folder and name it <strong>jump.js</strong></p>
+<p>Now that we have added a new input we can create a new system for jumping. create a new file in the <strong>src/systems/simulation</strong> folder and name it <strong>jump.js</strong></p>
 
 <p>Here is the code for a very basic jumping system:</p>
 
@@ -823,7 +825,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>Similar to how the gravity system we created earlier looked for entities with the "gravity" component, you can see the ecs.addEach function is looking for entities with the "player" component.</p>
 
-<p>Inside the function we are making a variable for the player's velocity on like 5, and then on like 7 we are checking if the "jump" button is pressed.</p>
+<p>Inside the function we are making a variable for the player's velocity on line 5, and then on line 7 we are checking if the "jump" button is pressed.</p>
 
 <p>There are 3 different game.input methods we can use,</p>
 
@@ -861,7 +863,7 @@ velocity.y  = -1.2;
 <pre><code class="json">
 "friction": {
     "x": 0.97,
-    "y": <em>1</em>
+<em>"y": 1</em>
 }
 </code></pre>
 
@@ -927,7 +929,7 @@ velocity.y  = -1.2;
 
 <p>To resolve collisions we need two new systems, <code>track-last-position</code> and <code>resolve-collisions</code>, both of which we will need to add manually to our project.</p>
 
-<p><code>track-last-position</code> runs each frame on every entity with a position and records it in a component called "lastPosition". This is important for know what position to restore the entity to after it intersects another.</p>
+<p><code>track-last-position</code> runs each frame on every entity with a position and records it in a component called "lastPosition". This is important for knowing what position to restore the entity to after it intersects another.</p>
 
 <p>To add the <code>track-last-position</code> system we need to create a new file in <strong>src/systems/simulation/</strong> named <strong>track-last-position.js</strong>, the contents of this file should be:</p>
 
@@ -1057,7 +1059,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <h2>Adding more platforms</h2>
 <em class="sub">Feeling jumpy</em>
 
-<p>This part will be pretty easy now that we have systems in place to handle resoling our collisions, we can add platforms wherever we want and they will just work.</p>
+<p>This part will be pretty easy now that we have systems in place to handle resolving our collisions, we can add platforms wherever we want and they will just work.</p>
 
 <p>To start let's add another platform in <strong>src/data/entities.json</strong> like so:</p>
 
@@ -1211,7 +1213,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>The first animations we will add will be for the player. Sticky baby can currently move left and right but the image stays the same. Let's fix that.</p>
 
-<p>To add animations we must edit **src/data/animations.json**. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:</p>
+<p>To add animations we must edit <strong>src/data/animations.json</strong>. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:</p>
 
 <pre><code class="json">
 <em>"player-idle": [{
@@ -1255,19 +1257,23 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 }]</em>
 </code></pre>
 
-<p>So what does all this data do? Let's go through it one piece at a time:
-- key - This is the name we want to give to the animation, often best to make it the same as the image name the animation uses, in our example: <code>player-run-right</code>
-- filmstripFrames - this lets the engine know how to chop up the spritesheet, it will use the width of the image and devide it by the number of frames to create individual images to cycle through.
-- time - The time in milliseconds that each frame will last, use this to adjust the speed of the animation.
-- properties - image
-            - name - Image file to use in our example: <code>player-run-right</code>.
-            - sourceX - Point to start the first frame, usually 0.
-            - sourceY - Point to start the first frame, usually 0.
-            - sourceWidth - The width of the entire spritesheet.
-            - sourceHeight - The height of the entire spritesheet.</p>
-
+<p>So what does all this data do? Let's go through it one piece at a time:</p>
+<ul>
+	<li> key - This is the name we want to give to the animation, often best to make it the same as the image name the animation uses, in our example: <code>player-run-right</code></li>
+	<li> filmstripFrames - this lets the engine know how to chop up the spritesheet, it will use the width of the image and devide it by the number of frames to create individual images to cycle through.</li>
+	<li> time - The time in milliseconds that each frame will last, use this to adjust the speed of the animation.</li>
+	<li> properties - image
+		<ul>
+			<li> name - Image file to use in our example: <code>player-run-right</code>.</li>
+			<li> sourceX - Point to start the first frame, usually 0.</li>
+			<li> sourceY - Point to start the first frame, usually 0.</li>
+			<li> sourceWidth - The width of the entire spritesheet.</li>
+			<li> sourceHeight - The height of the entire spritesheet.</li>
+		</ul>
+	</li>
+</ul>
 <p>So now that we have animations defined, we need to use them.
-To change the animations the player uses we will create a new system in the <strong>src/systems/simulation/</strong> folder called <code>run.js</code></pre>
+To change the animations the player uses we will create a new system in the <strong>src/systems/simulation/</strong> folder called <code>run.js</code></p>
 
 <p>The contents of this system should be as follows:</p>
 
@@ -1411,7 +1417,7 @@ if the left button is pressed, change the player's animation name to <code>"play
 
 <h3>Enter and exit scripts</h3>
 
-<p>Each scene can have code that runs at the beginning and end of it, these are stored in the **src/scripts/** folder and are named `scenename-enter.js` and `scenename-exit.js`(where 'scenename' is replaced with the name of the actual scene).
+<p>Each scene can have code that runs at the beginning and end of it, these are stored in the <strong>src/scripts/</strong> folder and are named `scenename-enter.js` and `scenename-exit.js`(where 'scenename' is replaced with the name of the actual scene).
 </p>
 
 <p>The sample project already has <strong>src/scripts/main-enter.js</strong> created for us, so we just need to modify it. Inside of the <code>module.exports = function</code> we will add code that will add new entities based on the prefab we created - to do this we will use their <code>game.instantiatePrefab</code> method.</p>
