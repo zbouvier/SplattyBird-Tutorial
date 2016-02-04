@@ -792,14 +792,14 @@ inside the file you will see inputs for the up, down, right, and left buttons. W
 <em>"use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var velocity = game.entities.get(entity, "velocity");
+	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var velocity = game.entities.get(entity, "velocity");
 
-    if (game.input.buttonPressed("jump")) {
-        velocity.y  = -1.2;
-    }
+		if (game.input.buttonPressed("jump")) {
+			velocity.y  = -1.2;
+		}
 
-}, "player");
+	}, "player");
 
 };</em>
 </code></pre>
@@ -918,10 +918,10 @@ velocity.y  = -1.2;
 <em>"use strict";
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function trackLastPosition(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var position = data.entities.get(entity, "position");
-        data.entities.set(entity, "lastPosition", { x: position.x, y: position.y });
-    }, "position");
+	ecs.addEach(function trackLastPosition(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var position = data.entities.get(entity, "position");
+		data.entities.set(entity, "lastPosition", { x: position.x, y: position.y });
+	}, "position");
 };</em>
 </code></pre>
 
@@ -944,50 +944,50 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <em>"use strict";
 
 function wasLeft(entityLastPosition, entitySize, otherPosition) {
-    return entityLastPosition.x + entitySize.width <= otherPosition.x;
+	return entityLastPosition.x + entitySize.width <= otherPosition.x;
 }
 function wasRight(entityLastPosition, otherPosition, otherSize) {
-    return entityLastPosition.x >= otherPosition.x + otherSize.width;
+	return entityLastPosition.x >= otherPosition.x + otherSize.width;
 }
 function wasAbove(entityLastPosition, entitySize, otherPosition) {
-    return entityLastPosition.y + entitySize.height <= otherPosition.y;
+	return entityLastPosition.y + entitySize.height <= otherPosition.y;
 }
 function wasBelow(entityLastPosition, otherPosition, otherSize) {
-    return entityLastPosition.y >= otherPosition.y + otherSize.height;
+	return entityLastPosition.y >= otherPosition.y + otherSize.height;
 }
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
-    data.entities.registerSearch("resolveCollisions", ["collisions","velocity","lastPosition","position"]);
-    ecs.addEach(function resolveCollisions(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var entityCollisions = data.entities.get(entity, "collisions");
-        var entityPosition = data.entities.get(entity, "position");
-        var entitySize = data.entities.get(entity, "size");
-        var entityVelocity = data.entities.get(entity, "velocity");
-        var entityLastPosition = data.entities.get(entity, "lastPosition");</p>
+	data.entities.registerSearch("resolveCollisions", ["collisions","velocity","lastPosition","position"]);
+	ecs.addEach(function resolveCollisions(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var entityCollisions = data.entities.get(entity, "collisions");
+		var entityPosition = data.entities.get(entity, "position");
+		var entitySize = data.entities.get(entity, "size");
+		var entityVelocity = data.entities.get(entity, "velocity");
+		var entityLastPosition = data.entities.get(entity, "lastPosition");</p>
 
 		for (var i = 0; i < entityCollisions.length; i++) {
-        var other = entityCollisions[i];
-        var otherPosition = data.entities.get(other, "position");
-        var otherSize = data.entities.get(other, "size");
+			var other = entityCollisions[i];
+			var otherPosition = data.entities.get(other, "position");
+			var otherSize = data.entities.get(other, "size");
 
-        if (wasLeft(entityLastPosition, entitySize, otherPosition)) {
-            entityPosition.x = otherPosition.x - entitySize.width;
-            entityVelocity.x = 0;
-        }
-        if (wasRight(entityLastPosition, otherPosition, otherSize)) {
-            entityPosition.x = otherPosition.x + otherSize.width;
-            entityVelocity.x = 0;
-        }
-        if (wasAbove(entityLastPosition, entitySize, otherPosition)) {
-            entityPosition.y = otherPosition.y - entitySize.height;
-            entityVelocity.y = 0;
-        }
-        if (wasBelow(entityLastPosition, otherPosition, otherSize)) {
-            entityPosition.y = otherPosition.y + otherSize.height;
-            entityVelocity.y = 0;
-        }
-    }
-}, "resolveCollisions");
+			if (wasLeft(entityLastPosition, entitySize, otherPosition)) {
+				entityPosition.x = otherPosition.x - entitySize.width;
+				entityVelocity.x = 0;
+			}
+			if (wasRight(entityLastPosition, otherPosition, otherSize)) {
+				entityPosition.x = otherPosition.x + otherSize.width;
+				entityVelocity.x = 0;
+			}
+			if (wasAbove(entityLastPosition, entitySize, otherPosition)) {
+				entityPosition.y = otherPosition.y - entitySize.height;
+				entityVelocity.y = 0;
+			}
+			if (wasBelow(entityLastPosition, otherPosition, otherSize)) {
+				entityPosition.y = otherPosition.y + otherSize.height;
+				entityVelocity.y = 0;
+			}
+		}
+	}, "resolveCollisions");
 
 };</em>
 </code></pre>
@@ -1131,26 +1131,26 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 "use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var velocity = game.entities.get(entity, "velocity");
+	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
-        <em>var entityCollisions = game.entities.get(entity, "collisions");
+		if (game.input.buttonPressed("jump")) {<em>
+			var entityCollisions = game.entities.get(entity, "collisions");
 
-	        for (var i = 0; i < entityCollisions.length; i++) {
-	            var other = entityCollisions[i];
-	            if (game.entities.get(other, "platform")) {
-	                var otherPosition = game.entities.get(other, "position");
-	                var position = game.entities.get(entity, "position");
-	                var size = game.entities.get(entity, "size");
-	                if ((position.y + size.height) <= otherPosition.y) {</em>
-	                    velocity.y  = -1.2;
-	                <em>}
-	            }
-	        }</em>
-    	}
+			for (var i = 0; i < entityCollisions.length; i++) {
+				var other = entityCollisions[i];
+				if (game.entities.get(other, "platform")) {
+					var otherPosition = game.entities.get(other, "position");
+					var position = game.entities.get(entity, "position");
+					var size = game.entities.get(entity, "size");
+					if ((position.y + size.height) <= otherPosition.y) {</em>
+						velocity.y  = -1.2;
+				<em>}
+				}
+			}</em>
+		}
 
-}, "player");
+	}, "player");
 
 };
 </code></pre>
@@ -1262,18 +1262,18 @@ To change the animations the player uses we will create a new system in the <str
 <em>"use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function run(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var animation = game.entities.get(entity, "animation");
+	ecs.addEach(function run(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var animation = game.entities.get(entity, "animation");
 
-   if (game.input.button("left")) {
-        animation.name = "player-run-left";
-    } else if (game.input.button("right")) {
-        animation.name = "player-run-right";
-    } else {
-        animation.name = "player-idle";
-    }
+		if (game.input.button("left")) {
+			animation.name = "player-run-left";
+		} else if (game.input.button("right")) {
+			animation.name = "player-run-right";
+		} else {
+			animation.name = "player-idle";
+		}
 
-}, "player");
+	}, "player");
 
 };</em>
 
@@ -1440,16 +1440,16 @@ To do this we need to add another simulation system, let's call this one <strong
 <em>"use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var entityCollisions = game.entities.get(entity, "collisions");
+	ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var entityCollisions = game.entities.get(entity, "collisions");
 
 		for (var i = 0; i < entityCollisions.length; i++) {
-        var other = entityCollisions[i];
-        if (game.entities.get(other, "goo")) {
-            game.entities.destroy(other);
-        }
-    }
-}, "player");
+			var other = entityCollisions[i];
+			if (game.entities.get(other, "goo")) {
+				game.entities.destroy(other);
+			}
+		}
+	}, "player");
 
 };</em>
 </code></pre>
@@ -1511,11 +1511,11 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function harvest(entity, context) { // eslint-disable-line no-unused-vars
-	    var score = game.entities.get(entity, "score");
+		var score = game.entities.get(entity, "score");
 
 		context.fillStyle = "#fff";
-	    context.font = "bold 26px arial";
-	    context.fillText("Goo: " + score, 16, 35);
+		context.font = "bold 26px arial";
+		context.fillText("Goo: " + score, 16, 35);
 
 	} ,"player");
 };</em>
@@ -1573,19 +1573,18 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 "use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var entityCollisions = game.entities.get(entity, "collisions");
-        <em>var score = game.entities.get(entity, "score");</em>
+	ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var entityCollisions = game.entities.get(entity, "collisions");
+		<em>var score = game.entities.get(entity, "score");</em>
 
 		for (var i = 0; i < entityCollisions.length; i++) {
-        var other = entityCollisions[i];
-        if (game.entities.get(other, "goo")) {
-            game.entities.destroy(other);
-            <em>game.entities.set(entity, "score", score + 1);</em>
-        }
-    }
-}, "player");
-
+			var other = entityCollisions[i];
+			if (game.entities.get(other, "goo")) {
+				game.entities.destroy(other);
+				<em>game.entities.set(entity, "score", score + 1);</em>
+			}
+		}
+	}, "player");
 
 };
 </code></pre>
@@ -1646,27 +1645,27 @@ game.sounds.play("jump");
 "use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var velocity = game.entities.get(entity, "velocity");
+	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var velocity = game.entities.get(entity, "velocity");
 
 		if (game.input.buttonPressed("jump")) {
-        var entityCollisions = game.entities.get(entity, "collisions");
+			var entityCollisions = game.entities.get(entity, "collisions");
 
-        for (var i = 0; i < entityCollisions.length; i++) {
-            var other = entityCollisions[i];
-            if (game.entities.get(other, "platform")) {
-                var otherPosition = game.entities.get(other, "position");
-                var position = game.entities.get(entity, "position");
-                var size = game.entities.get(entity, "size");
-                if ((position.y + size.height) <= otherPosition.y) {
-                    <em>game.sounds.play("jump");</em>
-                    velocity.y  = -1.2;
-                }
-            }
-        }
-    }
+			for (var i = 0; i < entityCollisions.length; i++) {
+				var other = entityCollisions[i];
+				if (game.entities.get(other, "platform")) {
+					var otherPosition = game.entities.get(other, "position");
+					var position = game.entities.get(entity, "position");
+					var size = game.entities.get(entity, "size");
+					if ((position.y + size.height) <= otherPosition.y) {
+						<em>game.sounds.play("jump");</em>
+						velocity.y  = -1.2;
+					}
+				}
+			}
+		}
 
-}, "player");
+	}, "player");
 
 
 };
@@ -1680,20 +1679,19 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 "use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
-    ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
-        var entityCollisions = game.entities.get(entity, "collisions");
-        var score = game.entities.get(entity, "score");
+	ecs.addEach(function collectGoo(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var entityCollisions = game.entities.get(entity, "collisions");
+		var score = game.entities.get(entity, "score");
 
-for (var i = 0; i < entityCollisions.length; i++) {
-        var other = entityCollisions[i];
-        if (game.entities.get(other, "goo")) {
-            <em>game.sounds.play("pickup");</em>
-            game.entities.destroy(other);
-            game.entities.set(entity, "score", score + 1);
-        }
-    }
-}, "player");
-
+		for (var i = 0; i < entityCollisions.length; i++) {
+			var other = entityCollisions[i];
+			if (game.entities.get(other, "goo")) {
+				<em>game.sounds.play("pickup");</em>
+				game.entities.destroy(other);
+				game.entities.set(entity, "score", score + 1);
+			}
+		}
+	}, "player");
 
 };
 </code></pre>
@@ -1759,18 +1757,15 @@ for (var i = 0; i < entityCollisions.length; i++) {
 "use strict";
 
 module.exports = function(game) { // eslint-disable-line no-unused-vars
+	<em>game.scaleCanvasToFitRectangle(800,600);</em>
 
-<em>game.scaleCanvasToFitRectangle(800,600);</em>
-
-for (var i = 0; i < 12; i++) {
-    var goo = game.instantiatePrefab("goo");
-    game.entities.set(goo, "position", {
-        "x": i * 70,
-        "y": -13
-    });
-}
-
-
+	for (var i = 0; i < 12; i++) {
+		var goo = game.instantiatePrefab("goo");
+		game.entities.set(goo, "position", {
+			"x": i * 70,
+			"y": -13
+		});
+	}
 };
 </code></pre>
 
