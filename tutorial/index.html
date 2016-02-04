@@ -15,10 +15,9 @@
 <div class="flexrow">
 	<div class="col1-4">
 		<div class="navigation module">
-			<img class="expand" src="img/logo.png"/>
-			<button class="sectionsBtn tab selected">Sections</button><button class="checkpointsBtn tab">Checkpoints</button>
+			<a href="http://splatjs.com"><img class="expand" src="img/logo.png"/></a>
 
-			<ul class="sections">
+			<ul >
 				<a href="#intro"><li>Intro</li></a>
 				<a href="#gettingStarted"><li>Splat ECS Starter Project</li></a>
 				<a href="#understandingECS"><li>Understanding ECS</li></a>
@@ -38,25 +37,7 @@
 				<a href="#debug"><li>Removing debugging systems</li></a>
 				<a href="#publishing"><li>Sharing and publishing</li></a>
 			</ul>
-			<ul class="checkpoints" style="display:none;">
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_001/src"><li><i class="fa fa-code"></i> 1. Sticky baby lives!</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_002/src"><li><i class="fa fa-code"></i> 2. Sizing things up
-</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_003/src"><li><i class="fa fa-code"></i> 3. Knowing your boundaries</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_004/src"><li><i class="fa fa-code"></i> 4. A change of scenery</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_005/src"><li><i class="fa fa-code"></i> 5. Weighing you down</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_006/src"><li><i class="fa fa-code"></i> 6. A leap of faith</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_007/src"><li><i class="fa fa-code"></i> 7. A firm foundation</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_008/src"><li><i class="fa fa-code"></i> 8. Following the rules</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_009/src"><li><i class="fa fa-code"></i> 9. Feeling jumpy</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_010/src"><li><i class="fa fa-code"></i> 10. Motion to add emotion</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_011/src"><li><i class="fa fa-code"></i> 11. Feeling prefabulous</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_012/src"><li><i class="fa fa-code"></i> 12. Competitive gaming
-</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_013/src"><li><i class="fa fa-code"></i> 13. Hearing is believing</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_014/src"><li><i class="fa fa-code"></i> 14. Making things presentable</li></a>
-				<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_015/src"><li><i class="fa fa-code"></i> 15. The finished product</li></a>
-			</ul>
+
 		</div> <!-- module -->
 	</div> <!-- end col1-4 -->
 <div class="col3-4" style="height: 100vh; overflow-x: scroll; position: relative;">
@@ -1965,22 +1946,6 @@ This is the build command that creates a fresh 'build' of your game which you ca
 
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-$(".sectionsBtn").click(function(){
-	$(".checkpoints").hide();
-	$(".sections").show();
-	$(".sectionsBtn").addClass("selected");
-	$(".checkpointsBtn").removeClass("selected");
-});
-$(".checkpointsBtn").click(function(){
-	$(".sections").hide();
-	$(".checkpoints").show();
-	$(".sectionsBtn").removeClass("selected");
-	$(".checkpointsBtn").addClass("selected");
-});
-
-</script>
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
