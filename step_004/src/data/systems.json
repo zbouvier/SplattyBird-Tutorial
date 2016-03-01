@@ -55,13 +55,7 @@
 			]
 		},
 		{
-			"name": "splat-ecs/lib/systems/constrain-to-playable-area",
-			"scenes": [
-				"main"
-			]
-		},
-		{
-			"name": "./systems/simulation/gravity",
+			"name": "splat-ecs/lib/systems/constrain-position",
 			"scenes": [
 				"main"
 			]

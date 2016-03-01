@@ -120,7 +120,7 @@ the entity we have listed is
 ```json
 {
    "id": 0,
-   "player": true,
+   "name": "player",
    "position": {
     "x": 100,
     "y": 100
@@ -193,7 +193,7 @@ To add a static image to an entity in Splat ECS you use the **image** component 
 ``` json
 {
   "id": 1,
-  "player": true,
+  "name": "player",
   "strokeStyle": "red",
   "image":{
 	  "name": "player-idle"
@@ -211,7 +211,7 @@ By default images added to an entity will take on the position and size of the e
 ``` json
 {
   "id": 1,
-  "player": true,
+  "name": "player",
   ...
   "size": {
 	  "width": 32,
@@ -283,11 +283,11 @@ So lets add the `constrain-to-playable-area` system reference after `box-collide
 There is one more thing we need to do to make `constrain-to-playable-area` work, that is tell it which entity to constrain, and what the size of the playable area is. To do this we need to revisit **src/data/entities.json** and add this to component and properties to the player:
 
 ```json
-"playableArea": {
+"constrainPosition": {
 	"x": 0,
 	"y": 0,
 	"width": 800,
-	"height": 600
+	"height": 800
 }
 ```
 **playableArea** is an invisible rectangle that can have an x, y, width and height just like an entity.
@@ -311,7 +311,7 @@ It is a bit hard to see where the playable area ends, so lets go ahead and add a
 	},
 	"size": {
 		"width": 800,
-		"height": 600
+		"height": 800
 	},
 	"image": {
 		"name": "sky"
@@ -342,7 +342,7 @@ Your player entity should now look like this:
 ```json
 {
 			"id": 1,
-			"player": true,
+			"name": "player",
 			"strokeStyle": "red",
 			"image":{
 				"name": "player-idle"
@@ -380,11 +380,11 @@ Your player entity should now look like this:
 				"x": 0.97,
 				"y": 0.97
 			},
-			"playableArea": {
+			"constrainPosition": {
 				"x": 0,
 				"y": 0,
 				"width": 800,
-				"height": 600
+				"height": 800
 			}
 		}
 ```
@@ -490,11 +490,11 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
+		if (game.inputs.buttonPressed("jump")) {
 			velocity.y  = -1.2;
 		}
 
-	}, "player");
+	}, "playerController2d");
 };
 
 ```
@@ -505,9 +505,9 @@ Inside the function we are making a variable for the player's velocity on like 5
 
 There are 3 different game.input methods we can use,
 
-- game.input.button("name-here") true if button is currently down (each frame).
-- game.input.buttonPressed("name-here") true for one frame at the beginning of the button press.
-- game.input.buttonDown("name-here")true for one frame when the button is released.
+- game.inputs.button("name-here") true if button is currently down (each frame).
+- game.inputs.buttonPressed("name-here") true for one frame at the beginning of the button press.
+- game.inputs.buttonDown("name-here")true for one frame when the button is released.
 
 The reason I chose `buttonPressed` is because it will only jump once when the button is first pressed instead of continually jumping.
 
@@ -556,10 +556,9 @@ Let's add this entity to **src/data/entities.json**:
 ```json
 {
 	"id": 4,
-	"platform": true,
 	"position": {
 		"x": 0,
-		"y": 536
+		"y": 736
 	},
 	"size": {
 		"width": 800,
@@ -699,14 +698,13 @@ To start lets add another platform in **src/data/entities.json** like so:
 ```json
 {
 	"id": 5,
-	"platform": true,
 	"position": {
 		"x": 0,
-		"y": 250
+		"y": 450
 	},
 	"size": {
-		"width": 396,
-		"height": 32
+		"width": 406,
+		"height": 41
 	},
 	"collisions": [],
 	"image":{
@@ -720,14 +718,13 @@ Be sure the ids of any platforms you add are unique, and add another:
 ```json
 {
 	"id":6,
-	"platform": true,
 	"position": {
-		"x": 400,
-		"y": 400
+		"x": 394,
+		"y": 600
 	},
 	"size": {
-		"width": 396,
-		"height": 32
+		"width": 406,
+		"height": 41
 	},
 	"collisions": [],
 	"image":{
@@ -766,7 +763,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
+		if (game.inputs.buttonPressed("jump")) {
 			var entityCollisions = game.entities.get(entity, "collisions");
 
 			for (var i = 0; i < entityCollisions.length; i++) {
@@ -782,7 +779,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			}
 		}
 
-	}, "player");
+	}, "playerController2d");
 };
 ```
 
@@ -878,15 +875,15 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function run(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var animation = game.entities.get(entity, "animation");
 
-		if (game.input.button("left")) {
+		if (game.inputs.button("left")) {
 			animation.name = "player-run-left";
-		} else if (game.input.button("right")) {
+		} else if (game.inputs.button("right")) {
 			animation.name = "player-run-right";
 		} else {
 			animation.name = "player-idle";
 		}
 
-	}, "player");
+	}, "playerController2d");
 };
 
 ```
@@ -960,7 +957,7 @@ Prefabs are reusable entities, think of them as a mold for stamping out a bunch 
 Here is the JSON we need for the collectable goo entities
 ```json
 "goo": {
-	"goo": true,
+	"points": 1,
 	"position": {
 		"x": 0,
 		"y": 0
@@ -1035,7 +1032,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 				game.entities.destroy(other);
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 };
 
 ```
@@ -1145,7 +1142,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 				game.entities.set(entity, "score", score + 1);
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 };
 ```
 
@@ -1188,7 +1185,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
+		if (game.inputs.buttonPressed("jump")) {
 			var entityCollisions = game.entities.get(entity, "collisions");
 
 			for (var i = 0; i < entityCollisions.length; i++) {
@@ -1205,7 +1202,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			}
 		}
 
-	}, "player");
+	}, "playerController2d");
 };
 ```
 
@@ -1229,7 +1226,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 				game.entities.set(entity, "score", score + 1);
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 };
 ```
 
@@ -1272,7 +1269,7 @@ Nex we need to add one line to **src/scripts/main-enter.js**, this is a special 
 
 module.exports = function(game) { // eslint-disable-line no-unused-vars
 
-	game.scaleCanvasToFitRectangle(800,600);
+	game.scaleCanvasToFitRectangle(800,800);
 
 	for (var i = 0; i < 12; i++) {
 		var goo = game.instantiatePrefab("goo");

@@ -42,7 +42,7 @@
 	</div> <!-- end col1-4 -->
 <div class="col3-4" style="height: 100vh; overflow-x: scroll; position: relative;">
 <header>
-		<h2 >Splatformer Tutorial</h2>
+		<h2>Splatformer Tutorial</h2>
 	<em class="sub whiteText">A brief intro to the Splat ECS Game Engine</em>
 
 </header>
@@ -53,6 +53,7 @@
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
+			<strong>This tutorial currently uses Splat version 4.1.1</strong>
 			<p>Splat ECS is a free and Open Source game engine project with the goal of making it easy to build games which are native to the web. Splat ECS is 100% JavaScript and all the code you write to create your game is 100% real JavaScript and JSON.
 			This tutorial will guide you through the basics of using Splat ECS and by the end we will have a simple game.</p>
 
@@ -270,7 +271,7 @@ Test that this is working and note that if the keys are not working you may need
   {
    "id": 0,
    "name": "camera",
-   "camera": true,
+
    "position": {
     "x": 0,
     "y": 0
@@ -389,7 +390,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 {
 	...
 	"id": 1,
-	"player": true,
+	"name": "player",
 	"strokeStyle": "red",
 	<em>"image":{
 	  "name": "player-idle"
@@ -426,7 +427,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 <pre><code class="json">
 {
   "id": 1,
-  "player": true,
+  "name": "player",
   ...
   <em>"size": {
       "width": 32,
@@ -465,14 +466,14 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 <h2>Keeping the player on the screen</h2>
 <em class="sub">Knowing your boundaries</em>
 
-<p>The next thing we will work on is keeping the player within the bounds of the screen. For our simple game we will always want the player to stay inside of a playable area of 800x600. To do this we need to make use of our first additional system. The system we need to add is called <code>constrain-to-playable-area</code> and it is part of Splat ECS engine so you can use it in any project.</p>
+<p>The next thing we will work on is keeping the player within the bounds of the screen. For our simple game we will always want the player to stay inside of a playable area of 800 by 800 px. To do this we need to make use of our first additional system. The system we need to add is called <code>constrain-position</code> and it is part of Splat ECS engine so you can use it in any project.</p>
 
 <h3>Adding a new system</h3>
 
 <p>To add a new system we have to edit <strong>/src/data/systems.json</strong>, the trickiest thing about systems is ordering them, but we will get into that more later.</p>
 
 <p>Systems come in two types: <strong>Renderer</strong> and <strong>Simulation</strong>.
-Since <code>constrain-to-playable-area</code>has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
+Since <code>constrain-position</code>has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
 
 <pre><code class="json">
 {
@@ -485,16 +486,16 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 
 <pre><code class="json">
 <em>{
-    "name": "splat-ecs/lib/systems/constrain-to-playable-area",
+    "name": "splat-ecs/lib/systems/constrain-position",
     "scenes": [
         "main"
     ]
 }</em>
 </code></pre>
 
-<code>"name"</code> is the path to the system JavaScript file, if it is a built in splat system it will begin with <strong>splat-ecs/lib/systems/</strong>, if it your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
+<p><code>"name"</code> is the path to the system JavaScript file, if it is a built in splat system it will begin with <strong>splat-ecs/lib/systems/</strong>, if it's your own system it will be either <strong>./systems/simulation/your-system-here</strong> or <strong>./systems/renderer/your-system-here</strong>. <!--To see a list of all available built-in Splat ECS systems and what they do click here: (Splat ECS Default Systems)[]--></p>
 
-<p>So let's add the <code>constrain-to-playable-area</code> system reference after <code>box-collider</code>, here is what that will look like:</p>
+<p>So let's add the <code>constrain-position</code> system reference after <code>box-collider</code>, here is what that will look like:</p>
 
 <pre><code class="json">
 ...
@@ -505,7 +506,7 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
         ]
     },
     <em>{
-        "name": "splat-ecs/lib/systems/constrain-to-playable-area",
+        "name": "splat-ecs/lib/systems/constrain-position",
         "scenes": [
             "main"
         ]
@@ -519,14 +520,46 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 ...
 </code></pre>
 
-<p>There is one more thing we need to do to make <code>constrain-to-playable-area</code> work, that is tell it which entity to constrain, and what the size of the playable area is. To do this we need to revisit <strong>src/data/entities.json</strong> and add this to component and properties to the player:</p>
+
+<p>Before we can add the `constrainPosition` player entity we need an entity to contain it, for this we will create a new entity in `/src/data/entities.json` beneath the player entity.</p>
+<p>Next we need to add one line to <strong>src/scripts/main-enter.js</strong>, this is a special method that will tell Splat ECS the size we want our game to be.
+<strong>src/scripts/main-enter.js</strong>
+
+<pre><code class="javascript">
+"use strict";
+
+module.exports = function(game) { // eslint-disable-line no-unused-vars
+	<em>game.scaleCanvasToFitRectangle(800,800);</em>
+};
+</code></pre>
+
 
 <pre><code class="json">
-<em>"playableArea": {
-    "x": 0,
-    "y": 0,
-    "width": 800,
-    "height": 600
+	{
+		"id": 1,
+		"name": "player",
+		...
+<em>	},
+	{
+		"id": 2,
+		"position": {
+			"x": 0,
+			"y": 0
+		},
+		"size": {
+			"width": 800,
+			"height": 800
+		}
+	}</em>
+</code></pre>
+
+<p> Since the playable area we are defining above in id 2 is 800 by 800 px we need to make sure the game cansa is scaled to fit proportionally, to do this we need to add
+
+<p>There is one more thing we need to do to make <code>constrain-position</code> work, that is tell it which entity to constrain, and which entity we want to keep it inside of, which in our case is the entity with the id 2 that we jsut created. To do this we need to revisit <strong>src/data/entities.json</strong> and add this to component and properties to the player:</p>
+
+<pre><code class="json">
+<em>"constrainPosition": {
+    "id": 2
 }</em>
 </code></pre>
 
@@ -560,25 +593,25 @@ Since <code>constrain-to-playable-area</code>has to do with keeping an entity in
 <h2>Adding a background</h2>
 <em class="sub">A change of scenery</em>
 
-<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's add a new entity called "background" to <strong>src/data/entities.json</strong> and give it a unique id.</p>
+<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's take the entity with the id 2 that we just created in the last step and add a couple new components to it. Open up <strong>src/data/entities.json</strong> again and add the following:</p>
 
 <pre><code class="json">
 ...
-<em>{
+{
     "id": 2,
-    "name": "background",
+    <em>"name": "background",</em>
     "position": {
         "x": 0,
         "y": 0
     },
     "size": {
         "width": 800,
-        "height": 600
-    },
+        "height": 800
+    <em>},
     "image": {
         "name": "sky"
-    }
-}</em>
+    }</em>
+}
 ...
 </code></pre>
 
@@ -626,7 +659,7 @@ You can add this anywhere in the player entity, but I added it after <code>"velo
 <pre><code class="json">
 {
     "id": 1,
-    "player": true,
+    "name": "player",
     "strokeStyle": "red",
     "image":{
         "name": "player-idle"
@@ -664,11 +697,11 @@ You can add this anywhere in the player entity, but I added it after <code>"velo
         "x": 0.97,
         "y": 0.97
     },
-    "playableArea": {
+    "constrainPosition": {
         "x": 0,
         "y": 0,
         "width": 800,
-        "height": 600
+        "height": 800
     }
 }
 </code></pre>
@@ -795,11 +828,11 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
+		if (game.inputs.buttonPressed("jump")) {
 			velocity.y  = -1.2;
 		}
 
-	}, "player");
+	}, "playerController2d");
 
 };</em>
 </code></pre>
@@ -811,9 +844,9 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <p>There are 3 different game.input methods we can use,</p>
 
 <ul>
-<li>game.input.button("name-here") true if button is currently down (each frame).</li>
-<li>game.input.buttonPressed("name-here") true for one frame at the beginning of the button press.</li>
-<li>game.input.buttonReleased("name-here") true for one frame when the button is released.</li>
+<li>game.inputs.button("name-here") true if button is currently down (each frame).</li>
+<li>game.inputs.buttonPressed("name-here") true for one frame at the beginning of the button press.</li>
+<li>game.inputs.buttonReleased("name-here") true for one frame when the button is released.</li>
 </ul>
 
 <p>The reason I chose <code>buttonPressed</code> is because it will only jump once when the button is first pressed instead of continually jumping.</p>
@@ -884,10 +917,10 @@ velocity.y  = -1.2;
 <pre><code class="json">
 <em>{
     "id": 4,
-    "platform": true,
+
     "position": {
         "x": 0,
-        "y": 536
+        "y": 736
     },
     "size": {
         "width": 800,
@@ -994,7 +1027,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 
 <p>This is a long one, TL;DR version of this is, if your player collides with another entity that has a "collisions" component the player will be pushed back one pixel in the appropriate direction.</p>
 
-<p>Be sure to add this system to <strong>src/data/systems.json</strong>, I recommend adding it right after <code>constrain-to-playable-area</code>  in the <code>"simulation":[]</code> array.</p>
+<p>Be sure to add this system to <strong>src/data/systems.json</strong>, I recommend adding it right after <code>constrain-position</code>  in the <code>"simulation":[]</code> array.</p>
 
 <pre><code class="json">
 <em>{
@@ -1047,14 +1080,14 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <pre><code class="json">
 <em>{
     "id": 5,
-    "platform": true,
+
     "position": {
         "x": 0,
-        "y": 250
+        "y": 450
     },
     "size": {
-        "width": 396,
-        "height": 32
+        "width": 406,
+        "height": 41
     },
     "collisions": [],
     "image":{
@@ -1068,14 +1101,14 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <pre><code class="json">
 <em>{
     "id":6,
-    "platform": true,
+
     "position": {
-        "x": 400,
-        "y": 400
+        "x": 394,
+        "y": 600
     },
     "size": {
-        "width": 396,
-        "height": 32
+        "width": 406,
+        "height": 41
     },
     "collisions": [],
     "image":{
@@ -1134,7 +1167,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {<em>
+		if (game.inputs.buttonPressed("jump")) {<em>
 			var entityCollisions = game.entities.get(entity, "collisions");
 
 			for (var i = 0; i < entityCollisions.length; i++) {
@@ -1150,7 +1183,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			}</em>
 		}
 
-	}, "player");
+	}, "playerController2d");
 
 };
 </code></pre>
@@ -1265,15 +1298,15 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function run(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var animation = game.entities.get(entity, "animation");
 
-		if (game.input.button("left")) {
+		if (game.inputs.button("left")) {
 			animation.name = "player-run-left";
-		} else if (game.input.button("right")) {
+		} else if (game.inputs.button("right")) {
 			animation.name = "player-run-right";
 		} else {
 			animation.name = "player-idle";
 		}
 
-	}, "player");
+	}, "playerController2d");
 
 };</em>
 
@@ -1363,7 +1396,7 @@ if the left button is pressed, change the player's animation name to <code>"play
 
 <pre><code class="json">
 <em>"goo": {
-    "goo": true,
+    "points": 1,
     "position": {
         "x": 0,
         "y": 0
@@ -1411,13 +1444,14 @@ if the left button is pressed, change the player's animation name to <code>"play
 <em>"use strict";
 
 module.exports = function(game) { // eslint-disable-line no-unused-vars
+	game.scaleCanvasToFitRectangle(800,800);
 
-	for (var i = 0; i < 12; i++) {
+<em>	for (var i = 0; i < 12; i++) {
 		var goo = game.instantiatePrefab("goo");
 		game.entities.set(goo, "position", {
 			"x": i * 70,
 			"y": -13
-		});
+		});</em>
 	}
 };</em>
 </code></pre>
@@ -1445,11 +1479,11 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 		for (var i = 0; i < entityCollisions.length; i++) {
 			var other = entityCollisions[i];
-			if (game.entities.get(other, "goo")) {
+			if (game.entities.get(other, "points")) {
 				game.entities.destroy(other);
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 
 };</em>
 </code></pre>
@@ -1459,7 +1493,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <ul>
 <li>Creates a variable for the player's collisions array,</li>
 <li>Loops over all current collisions the player entity is experiencing</li>
-<li>Checks to see if any of the other entities player is colliding with have a <code>"goo"</code> component, and if they do it destroys them.</li>
+<li>Checks to see if any of the other entities player is colliding with have a <code>"points"</code> component, and if they do it destroys them.</li>
 </ul>
 
 <p>We now need to add this new system to <strong>src/data/systems.json</strong>, I recommend adding it right after <code>resolve-collisions</code> at the end of the <code>"simulation":[]</code> array.</p>
@@ -1567,7 +1601,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>Open up <strong>src/systems/simulation/collect-goo.js</strong> again and let's add a few lines:</p>
 
-<p>Here is how the file will look after we add two lines, one to get the <code>"score"</code> component of the player entity, and one to add 1 to it each time the player grabs a ball of goo.
+<p>Here is how the file will look after we add two lines, one to get the <code>"score"</code> component of the player entity, and one to add the amount of points (from the goo's `points` component) to it each time the player grabs a ball of goo.
 
 <pre><code class="javascript">
 "use strict";
@@ -1579,12 +1613,13 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 		for (var i = 0; i < entityCollisions.length; i++) {
 			var other = entityCollisions[i];
-			if (game.entities.get(other, "goo")) {
+			var points = game.entities.get(other, "points");
+			if (points) {
 				game.entities.destroy(other);
-				<em>game.entities.set(entity, "score", score + 1);</em>
+				<em>game.entities.set(entity, "score", score + points);</em>
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 
 };
 </code></pre>
@@ -1648,7 +1683,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.input.buttonPressed("jump")) {
+		if (game.inputs.buttonPressed("jump")) {
 			var entityCollisions = game.entities.get(entity, "collisions");
 
 			for (var i = 0; i < entityCollisions.length; i++) {
@@ -1665,7 +1700,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			}
 		}
 
-	}, "player");
+	}, "playerController2d");
 
 
 };
@@ -1685,13 +1720,14 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 		for (var i = 0; i < entityCollisions.length; i++) {
 			var other = entityCollisions[i];
-			if (game.entities.get(other, "goo")) {
+			var points = game.entities.get(other, "points");
+			if (points) {
 				<em>game.sounds.play("pickup");</em>
 				game.entities.destroy(other);
-				game.entities.set(entity, "score", score + 1);
+				game.entities.set(entity, "score", score + points);
 			}
 		}
-	}, "player");
+	}, "playerController2d");
 
 };
 </code></pre>
@@ -1725,7 +1761,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Adjusting the aspect ratio</h2>
 <em class="sub">Making things presentable</em>
 
-<p>You will notice that our game is stuck up in the top left corner of a full-screen black canvas. We want the game to scale depending ont he browser window size so that the whole game is always in view (not cut off) and the artwork is always the correct aspect ratio.</p>
+<p>You will notice that our game is stuck up in the top left corner of a full-screen black canvas. We want the game to scale depending on the browser window size so that the whole game is always in view (not cut off) and the artwork is always the correct aspect ratio.</p>
 
 <p>To do this we need to add another reference to a built in Splat ECS system called <code>match-center</code> to <strong>src/data/systems.json</strong>.</p>
 
@@ -1750,24 +1786,6 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 </code></pre>
 </p>
 
-<p>Nex we need to add one line to <strong>src/scripts/main-enter.js</strong>, this is a special method that will tell Splat ECS the size we want our game to be.
-<strong>src/scripts/main-enter.js</strong>
-
-<pre><code class="javascript">
-"use strict";
-
-module.exports = function(game) { // eslint-disable-line no-unused-vars
-	<em>game.scaleCanvasToFitRectangle(800,600);</em>
-
-	for (var i = 0; i < 12; i++) {
-		var goo = game.instantiatePrefab("goo");
-		game.entities.set(goo, "position", {
-			"x": i * 70,
-			"y": -13
-		});
-	}
-};
-</code></pre>
 
 <p><img src="../step_014/screenshot_014.png" class="expand" alt="Step 14 screenshot" title="" /></p>
 

@@ -3,7 +3,7 @@
 		{
 			"id": 0,
 			"name": "camera",
-			"camera": true,
+
 			"position": {
 				"x": 0,
 				"y": 0
@@ -12,7 +12,7 @@
 		},
 		{
 			"id": 1,
-			"player": true,
+			"name": "player",
 			"strokeStyle": "red",
 			"image":{
 				"name": "player-idle"
@@ -29,7 +29,6 @@
 				"x": 0,
 				"y": 0
 			},
-			"gravity": 0.02,
 			"playerController2d": {
 				"up": "up",
 				"down": "down",
@@ -50,11 +49,8 @@
 				"x": 0.97,
 				"y": 0.97
 			},
-			"playableArea": {
-				"x": 0,
-				"y": 0,
-				"width": 800,
-				"height": 600
+			"constrainPosition": {
+				"id": 2
 			}
 		},
 		{
@@ -66,7 +62,7 @@
 			},
 			"size": {
 				"width": 800,
-				"height": 600
+				"height": 800
 			},
 			"image": {
 				"name": "sky"

@@ -15,7 +15,7 @@
 		},
 		{
 			"id": 1,
-			"player": true,
+			"name": "player",
 			"strokeStyle": "red",
 			"score": 0,
 			"animation": {
@@ -58,11 +58,8 @@
 				"x": 0.97,
 				"y": 1
 			},
-			"playableArea": {
-				"x": 0,
-				"y": 0,
-				"width": 800,
-				"height": 600
+			"constrainPosition": {
+				"id": 2
 			},
 			"collisions":[]
 		},
@@ -75,7 +72,7 @@
 			},
 			"size": {
 				"width": 800,
-				"height": 600
+				"height": 800
 			},
 			"image": {
 				"name": "sky"
@@ -83,10 +80,9 @@
 		},
 		{
 			"id": 4,
-			"platform": true,
 			"position": {
 				"x": 0,
-				"y": 536
+				"y": 736
 			},
 			"size": {
 				"width": 800,
@@ -99,14 +95,13 @@
 		},
 		{
 			"id": 5,
-			"platform": true,
 			"position": {
 				"x": 0,
-				"y": 250
+				"y": 450
 			},
 			"size": {
-				"width": 396,
-				"height": 32
+				"width": 406,
+				"height": 41
 			},
 			"collisions": [],
 			"image":{
@@ -115,14 +110,13 @@
 		},
 		{
 			"id":6,
-			"platform": true,
 			"position": {
-				"x": 400,
-				"y": 400
+				"x": 394,
+				"y": 600
 			},
 			"size": {
-				"width": 396,
-				"height": 32
+				"width": 406,
+				"height": 41
 			},
 			"collisions": [],
 			"image":{
