@@ -8,5 +8,5 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 		context.font = "bold 26px arial";
 		context.fillText("Goo: " + score, 16, 35);
 
-	} ,"player");
+	}, "playerController2d");
 };
