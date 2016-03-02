@@ -23,7 +23,7 @@
 				"frame": 0,
 				"loop": true,
 				"speed": 1,
-				"name": "player-idle"
+				"name": "player-idle.png"
 			},
 			"position": {
 				"x": 100,
@@ -76,7 +76,7 @@
 			},
 
 			"image": {
-				"name": "sky"
+				"name": "sky.png"
 			}
 		},
 		{
@@ -91,7 +91,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"ground"
+				"name":"ground.png"
 			}
 		},
 		{
@@ -106,7 +106,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"platform"
+				"name":"platform.png"
 			}
 		},
 		{
@@ -121,7 +121,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"platform"
+				"name":"platform.png"
 			}
 		}
 	]

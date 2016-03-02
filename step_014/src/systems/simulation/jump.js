@@ -13,7 +13,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 				var position = game.entities.get(entity, "position");
 				var size = game.entities.get(entity, "size");
 				if ((position.y + size.height) <= otherPosition.y) {
-					game.sounds.play("jump");
+					game.sounds.play("jump.mp3");
 					velocity.y  = -1.2;
 				}
 

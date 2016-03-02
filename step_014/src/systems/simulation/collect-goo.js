@@ -9,7 +9,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			var other = entityCollisions[i];
 			var points = game.entities.get(other, "points");
 			if (points) {
-				game.sounds.play("pickup");
+				game.sounds.play("pickup.mp3");
 				game.entities.destroy(other);
 				game.entities.set(entity, "score", score + points);
 			}

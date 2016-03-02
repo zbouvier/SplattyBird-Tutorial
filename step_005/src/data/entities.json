@@ -3,6 +3,7 @@
 		{
 			"id": 0,
 			"name": "camera",
+			"camera": true,
 			"position": {
 				"x": 0,
 				"y": 0
@@ -14,7 +15,7 @@
 			"name": "player",
 			"strokeStyle": "red",
 			"image":{
-				"name": "player-idle"
+				"name": "player-idle.png"
 			},
 			"position": {
 				"x": 100,
@@ -65,7 +66,7 @@
 				"height": 800
 			},
 			"image": {
-				"name": "sky"
+				"name": "sky.png"
 			}
 		}
 	]

@@ -15,7 +15,7 @@
 			"name": "player",
 			"strokeStyle": "red",
 			"image":{
-				"name": "player-idle"
+				"name": "player-idle.png"
 			},
 			"position": {
 				"x": 100,
@@ -65,7 +65,7 @@
 				"height": 800
 			},
 			"image": {
-				"name": "sky"
+				"name": "sky.png"
 			}
 		}
 	]

@@ -89,25 +89,29 @@
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video src="mov/finished-game.mp4" autoplay="true" loop="true" style="max-width: 100%;"></video>
+			<video controls style="max-width: 100%;" poster="img/screenshot_015.png">
+				<source src="mov/step_015.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
 		</div>
 	</div>
 	<div class="col1-2">
 		<div class="module">
 		<p>Here is a preview of the game we are going to create in this tutorial. The game is a simple platformer where you use arrow keys to move the player and spacebar to jump, the goal is to collect  the green balls littered  throughout the level to increase your score.</p>
+
+		<p>To get started on building our game there is a little bit of setup we need to do first, let's begin.
+		Here is what we need for the setup phase, I will show you how to get each item if you don't already have it.</p>
+
+		<ul>
+			<li> Browser</li>
+			<li> Text editor</li>
+			<li> Terminal</li>
+			<li> Node.js</li>
+			<li> Splat ECS Engine</li>
+		</ul>
 		</div>
 	</div>
 </div>
-<p>To get started on building our game there is a little bit of setup we need to do first, let's begin.
-Here is what we need for the setup phase, I will show you how to get each item if you don't already have it.</p>
 
-<ul>
-	<li> Browser</li>
-	<li> Text editor</li>
-	<li> Terminal</li>
-	<li> Node.js</li>
-	<li> Splat ECS Engine</li>
-</ul>
 
 <h4> Browser</h4>
 
@@ -358,30 +362,33 @@ Here you will see module.exports on line 3, this is the code to export the modul
 <h2>Using images in Splat ECS</h2>
 <em class="sub">Sticky Baby lives!</em>
 
-<p>To start using images in splat it is as easy as adding them to the <strong>/src/images/</strong> folder and then naming them in <strong>/src/data/images.json</strong></p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_001.png">
+				<source src="mov/step_001.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
 
-<p>First download the assets pack for this game here:</p>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>To start using images in splat it is as easy as adding them to the <strong>/src/img/</strong> folder!</p>
 
-<a class="btn" href="https://github.com/SplatJS/Splatformer-Tutorial/raw/master/splatformer_assets_pack.zip"><i class="fa fa-file-archive-o"></i>Splatformer Assets Pack</a>
+			<p>First download the assets pack for this game here:</p>
 
-<p> When you unzip the file and you will find two folders, images, and sounds.</p>
+			<a class="btn" href="https://github.com/SplatJS/Splatformer-Tutorial/raw/master/splatformer_assets_pack.zip"><i class="fa fa-file-archive-o"></i>Splatformer Assets Pack</a>
 
-<p>Copy all of the images into your game <strong>/src/images/</strong> then open up <strong>/src/data/images.json</strong>. Here you will find an empty JSON object <code>{ }</code>, we need to add images so the game can know where they are, and so we can give them names. It might be easiest to add all of the images now, the JSON file should then look like this:</p>
+			<p> When you unzip the file and you will find two folders, images &amp; sounds, copy all of the images into your game's <strong>/src/img/</strong> and <strong>/src/sounds/</strong>.</p>
 
-<pre><code class="json">
-{
-    <em>"player-idle":"images/player-idle.png",
-    "player-run-left":"images/player-run-left.png",
-    "player-run-right":"images/player-run-right.png",
-    "ground":"images/ground.png",
-    "platform":"images/platform.png",
-    "sky":"images/sky.png",
-    "goo":"images/goo.png"</em>
-}
-</code></pre>
+			<p>First we should give the player an image, to do this we need to go into <strong>/src/data/entities.json</strong>.
+			Inside <strong>/src/data/entities.json</strong> you will see an array called <code>"main: []"</code> this refers to the main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as many scenes as you want and each can have it's own set of entities.</p>
 
-<p>First we should give the player an image, to do this we need to go into <strong>/src/data/entities.json</strong>.
-Inside <strong>/src/data/entities.json</strong> you will see an array called <code>"main: []"</code> this refers to the main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as many scenes as you want and each can have it's own set of entities.</p>
+		</div>
+	</div>
+</div>
+
+
 
 <p>Let's find player in the list on entities and add an <strong>image</strong> to it!
 To add a static image to an entity in Splat ECS you use the <strong>image</strong> component like this:</p>
@@ -393,7 +400,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 	"name": "player",
 	"strokeStyle": "red",
 	<em>"image":{
-	  "name": "player-idle"
+	  "name": "player-idle.png"
   	},</em>
 	...
  }
@@ -401,7 +408,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 
 <p>Now if you check your browser you should see the red-outlined box now has sticky baby inside it! But something looks wrong... Sticky baby's image is being stretched to the size of the player entity (100x100).</p>
 
-<img src="../step_001/screenshot_001.png" class="expand" alt="Step 1 screenshot" title="" />
+<img src="img/screenshot_001.png" class="expand" alt="Step 1 screenshot" title="" />
 
 <a name="cp1"></a>
 <div class="flexrow checkpoint">
@@ -419,10 +426,23 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 </div>
 
 
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_002.png">
+				<source src="mov/step_002.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
 
 
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>By default images added to an entity will take on the position and size of the entity, to fix this we can change the size of the entity to match the image size, or add properties to the image component to make it a specific size. For this case we want to change the size of the player entity anyway so let's go ahead and do that like this:</p>
 
-<p>By default images added to an entity will take on the position and size of the entity, to fix this we can change the size of the entity to match the image size, or add properties to the image component to make it a specific size. For this case we want to change the size of the player entity anyway so let's go ahead and do that like this:</p>
+		</div>
+	</div>
+</div>
 
 <pre><code class="json">
 {
@@ -439,7 +459,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 
 <p>Now the player should be the correct size, and not stretched.</p>
 
-<p><img src="../step_002/screenshot_002.png" class="expand" alt="Step 2 screenshot" title="" /></p>
+<p><img src="img/screenshot_002.png" class="expand" alt="Step 2 screenshot" title="" /></p>
 
 <a name="cp2"></a>
 <div class="flexrow checkpoint">
@@ -466,14 +486,33 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 <h2>Keeping the player on the screen</h2>
 <em class="sub">Knowing your boundaries</em>
 
-<p>The next thing we will work on is keeping the player within the bounds of the screen. For our simple game we will always want the player to stay inside of a playable area of 800 by 800 px. To do this we need to make use of our first additional system. The system we need to add is called <code>constrain-position</code> and it is part of Splat ECS engine so you can use it in any project.</p>
 
-<h3>Adding a new system</h3>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_003.png">
+				<source src="mov/step_003.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
 
-<p>To add a new system we have to edit <strong>/src/data/systems.json</strong>, the trickiest thing about systems is ordering them, but we will get into that more later.</p>
 
-<p>Systems come in two types: <strong>Renderer</strong> and <strong>Simulation</strong>.
-Since <code>constrain-position</code>has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
+
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>The next thing we will work on is keeping the player within the bounds of the screen. For our simple game we will always want the player to stay inside of a playable area of 800 by 800 px. To do this we need to make use of our first additional system. The system we need to add is called <code>constrain-position</code> and it is part of Splat ECS engine so you can use it in any project.</p>
+
+			<h3>Adding a new system</h3>
+
+			<p>To add a new system we have to edit <strong>/src/data/systems.json</strong>, the trickiest thing about systems is ordering them, but we will get into that more later.</p>
+
+			<p>Systems come in two types: <strong>Renderer</strong> and <strong>Simulation</strong>.
+			Since <code>constrain-position</code>has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
+		</div>
+	</div>
+</div>
+
+
 
 <pre><code class="json">
 {
@@ -567,7 +606,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 
 <p>Check the game in the browser, now you should stop at an invisible wall when you hit the edges of the 800x600 rectangle.</p>
 
-<p><img src="../step_003/screenshot_003.png" class="expand" alt="Step 3 screenshot" title="" /></p>
+<p><img src="img/screenshot_003.png" class="expand" alt="Step 3 screenshot" title="" /></p>
 
 <a name="cp3"></a>
 <div class="flexrow checkpoint">
@@ -593,7 +632,23 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 <h2>Adding a background</h2>
 <em class="sub">A change of scenery</em>
 
-<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's take the entity with the id 2 that we just created in the last step and add a couple new components to it. Open up <strong>src/data/entities.json</strong> again and add the following:</p>
+
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_004.png">
+				<source src="mov/step_004.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+		<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's take the entity with the id 2 that we just created in the last step and add a couple new components to it. Open up <strong>src/data/entities.json</strong> again and add the following:</p>
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 ...
@@ -609,7 +664,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
         "height": 800
     <em>},
     "image": {
-        "name": "sky"
+        "name": "sky.png"
     }</em>
 }
 ...
@@ -619,7 +674,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 
 <p>Now we should see a stripey purple background for our game, just the way sticky baby likes it! Since the position and size are identical to the <code>playableArea</code> we set for the player entity, the player cannot move off the background image.</p>
 
-<p><img src="../step_004/screenshot_004.png" class="expand" alt="Step 4 screenshot" title="" /></p>
+<p><img src="img/screenshot_004.png" class="expand" alt="Step 4 screenshot" title="" /></p>
 
 <a name="cp4"></a>
 <div class="flexrow checkpoint">
@@ -645,9 +700,26 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 <h2>Gravity</h2>
 <em class="sub">Weighing you down</em>
 
-<p>Another staple of platformer games is gravity, in Splat ECS gravity is simply a force applied down on entities, this will be the first time we get to create our own system.</p>
 
-<p>Before we add our system we need to set a gravity component on the player, we do this by adding:</p>
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_005.png">
+				<source src="mov/step_005.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>Another staple of platformer games is gravity, in Splat ECS gravity is simply a force applied down on entities, this will be the first time we get to create our own system.</p>
+
+			<p>Before we add our system we need to set a gravity component on the player, we do this by adding:</p>
+
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 "gravity": 0.02,
@@ -662,7 +734,7 @@ You can add this anywhere in the player entity, but I added it after <code>"velo
     "name": "player",
     "strokeStyle": "red",
     "image":{
-        "name": "player-idle"
+        "name": "player-idle.png"
     },
     "position": {
         "x": 100,
@@ -771,7 +843,7 @@ Before:
 
 <p>Now check the game in your browser, if everything was done correctly the player should fall out of the sky and land on the bottom of the screen, you can still of course move left and right.</p>
 
-<p><img src="../step_005/screenshot_005.png" class="expand" alt="Step 5 screenshot" title="" /></p>
+<p><img src="img/screenshot_005.png" class="expand" alt="Step 5 screenshot" title="" /></p>
 
 <a name="cp5"></a>
 <div class="flexrow checkpoint">
@@ -798,12 +870,30 @@ Before:
 <h2>Jumping</h2>
 <em class="sub">A leap of faith</em>
 
-<p>To add jumping we will first need to add a jump button in the game's list for usable inputs. Splat ECS uses virtual buttons so you can name a button "action" or "jump" or whatever you like and assign as many keyboard keys to it as you like.</p>
 
-<h3>Adding a new input</h3>
 
-<p>To add a new input you will need to edit <strong>src/data/inputs.json</strong>
-inside the file you will see inputs for the up, down, right, and left buttons. We can add a jump button at the bottom by adding this before the closing bracket:</p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_006.png">
+				<source src="mov/step_006.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>To add jumping we will first need to add a jump button in the game's list for usable inputs. Splat ECS uses virtual buttons so you can name a button "action" or "jump" or whatever you like and assign as many keyboard keys to it as you like.</p>
+
+			<h3>Adding a new input</h3>
+
+			<p>To add a new input you will need to edit <strong>src/data/inputs.json</strong>
+			inside the file you will see inputs for the up, down, right, and left buttons. We can add a jump button at the bottom by adding this before the closing bracket:</p>
+
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 <em>"jump": {
@@ -883,7 +973,7 @@ velocity.y  = -1.2;
 
 <p>Now when you view your game in the browser your player will be able to jump when space is pressed. You will probably notice that if you continue to jump you can jump in mid-air, we will fix this later. Now for the element that makes this game a platformer more than anything... platforms!</p>
 
-<p><img src="../step_006/screenshot_006.png" class="expand" alt="Step 6 screenshot" title="" /></p>
+<p><img src="img/screenshot_006.png" class="expand" alt="Step 6 screenshot" title="" /></p>
 
 <a name="cp6"></a>
 <div class="flexrow checkpoint">
@@ -910,9 +1000,28 @@ velocity.y  = -1.2;
 <h2>Adding platforms</h2>
 <em class="sub">A firm foundation</em>
 
-<p>Let's start by adding ground, we can do this simply by creating a new entity.</p>
 
-<p>Let's add this entity to <strong>src/data/entities.json</strong>:</p>
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_007.png">
+				<source src="mov/step_007.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+
+
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>Let's start by adding ground, we can do this simply by creating a new entity.</p>
+
+			<p>Let's add this entity to <strong>src/data/entities.json</strong>:</p>
+		</div>
+	</div>
+</div>
+
+
 
 <pre><code class="json">
 <em>{
@@ -928,7 +1037,7 @@ velocity.y  = -1.2;
     },
     "collisions": [],
     "image":{
-        "name":"ground"
+        "name":"ground.png"
     }
 }</em>
 </code></pre>
@@ -1046,7 +1155,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 
 <p>Okay now we can go back to the browser and if everything was done correctly your player should fall and land on top of the ground entity, you can jump around and you should always land on the ground.</p>
 
-<p><img src="../step_007/screenshot_007.png" class="expand" alt="Step 7 screenshot" title="" /></p>
+<p><img src="img/screenshot_007.png" class="expand" alt="Step 7 screenshot" title="" /></p>
 
 <a name="cp7"></a>
 <div class="flexrow checkpoint">
@@ -1073,9 +1182,27 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <h2>Adding more platforms</h2>
 <em class="sub">Feeling jumpy</em>
 
-<p>This part will be pretty easy now that we have systems in place to handle resolving our collisions, we can add platforms wherever we want and they will just work.</p>
 
-<p>To start let's add another platform in <strong>src/data/entities.json</strong> like so:</p>
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_008.png">
+				<source src="mov/step_008.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>This part will be pretty easy now that we have systems in place to handle resolving our collisions, we can add platforms wherever we want and they will just work.</p>
+
+			<p>To start let's add another platform in <strong>src/data/entities.json</strong> like so:</p>
+
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 <em>{
@@ -1091,7 +1218,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
     },
     "collisions": [],
     "image":{
-        "name":"platform"
+        "name":"platform.png"
     }
 }</em>
 </code></pre>
@@ -1112,7 +1239,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
     },
     "collisions": [],
     "image":{
-        "name":"platform"
+        "name":"platform.png"
     }
 }</em>
 </code></pre>
@@ -1131,7 +1258,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <p>So now if you play the game in your browser you will be able to jump onto the other platforms!
 You might notice that the jumping in the game acts a bit weird, you can continue to jump over and over and there is no way to stop sticky baby from jumping in mid-air!</p>
 
-<p><img src="../step_008/screenshot_008.png" class="expand" alt="Step 8 screenshot" title="" /></p>
+<p><img src="img/screenshot_008.png" class="expand" alt="Step 8 screenshot" title="" /></p>
 
 <a name="cp8"></a>
 <div class="flexrow checkpoint">
@@ -1158,7 +1285,25 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 <h2>Fixing jumping</h2>
 <em class="sub">Following the rules</em>
 
-<p>To fix this we need to edit the <strong>src/systems/simulation/jump.js</strong> system a bit, and now that we have platforms it makes since to only let the player jump if the player is standing on top of a platform. Here is the code we use to add that feature and how the system should look after it is added:</p>
+
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_009.png">
+				<source src="mov/step_009.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>To fix this we need to edit the <strong>src/systems/simulation/jump.js</strong> system a bit, and now that we have platforms it makes since to only let the player jump if the player is standing on top of a platform. Here is the code we use to add that feature and how the system should look after it is added:</p>
+
+		</div>
+	</div>
+</div>
+
+
 
 <pre><code class="javascript">
 "use strict";
@@ -1167,18 +1312,16 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
 
-		if (game.inputs.buttonPressed("jump")) {<em>
+<em>		if (game.inputs.buttonPressed("jump")) {
 			var entityCollisions = game.entities.get(entity, "collisions");
 
 			for (var i = 0; i < entityCollisions.length; i++) {
 				var other = entityCollisions[i];
-				if (game.entities.get(other, "platform")) {
-					var otherPosition = game.entities.get(other, "position");
-					var position = game.entities.get(entity, "position");
-					var size = game.entities.get(entity, "size");
-					if ((position.y + size.height) <= otherPosition.y) {</em>
-						velocity.y  = -1.2;
-				<em>}
+				var otherPosition = game.entities.get(other, "position");
+				var position = game.entities.get(entity, "position");
+				var size = game.entities.get(entity, "size");
+				if ((position.y + size.height) <= otherPosition.y) {
+					velocity.y  = -1.2;
 				}
 			}</em>
 		}
@@ -1223,11 +1366,29 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Animation</h2>
 <em class="sub">Motion to add emotion</em>
 
-<p>Splat ECS has built in support for sprite animation and if you setup your artwork to work with the default format it can be super easy to get animated sprites working quickly.</p>
 
-<p>The first animations we will add will be for the player. Sticky baby can currently move left and right but the image stays the same. Let's fix that.</p>
 
-<p>To add animations we must edit <strong>src/data/animations.json</strong>. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:</p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_010.png">
+				<source src="mov/step_010.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>Splat ECS has built in support for sprite animation and if you setup your artwork to work with the default format it can be super easy to get animated sprites working quickly.</p>
+
+			<p>The first animations we will add will be for the player. Sticky baby can currently move left and right but the image stays the same. Let's fix that.</p>
+
+			<p>To add animations we must edit <strong>src/data/animations.json</strong>. Let's add the idle, left, and right running animations now. Below is the format for filmstrip-formatted spritesheets:</p>
+
+		</div>
+	</div>
+</div>
+
+
 
 <pre><code class="json">
 <em>"player-idle": [{
@@ -1235,7 +1396,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
     "time": 1,
     "properties": {
         "image": {
-            "name": "player-idle",
+            "name": "player-idle.png",
             "sourceX": 0,
             "sourceY": 0,
             "sourceWidth": 32,
@@ -1248,7 +1409,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
     "time": 150,
     "properties": {
         "image": {
-            "name": "player-run-left",
+            "name": "player-run-left.png",
             "sourceX": 0,
             "sourceY": 0,
             "sourceWidth": 128,
@@ -1261,7 +1422,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
     "time": 150,
     "properties": {
         "image": {
-            "name": "player-run-right",
+            "name": "player-run-right.png",
             "sourceX": 0,
             "sourceY": 0,
             "sourceWidth": 128,
@@ -1336,13 +1497,13 @@ if the left button is pressed, change the player's animation name to <code>"play
     "frame": 0,
     "loop": true,
     "speed": 1,
-    "name": "player-idle"
+    "name": "player-idle.png"
 }</em>
 </code></pre>
 
 <p>Now test out the game in the browser and sticky baby should be able to run around in style!</p>
 
-<img src="../step_010/screenshot_010.png" class="expand" alt="Step 10 screenshot" />
+<img src="img/screenshot_010.png" class="expand" alt="Step 10 screenshot" />
 
 <a name="cp10"></a>
 <div class="flexrow checkpoint">
@@ -1366,11 +1527,29 @@ if the left button is pressed, change the player's animation name to <code>"play
 <h2>Pickups!</h2>
 <em class="sub">Feeling prefabulous</em>
 
-<p>The sticky baby needs to collect balls of goo to remain sticky, so let's get some goo in the game.</p>
 
-<p>So we want to be able to add lots of items for the player to pick up, and in this tutorial they will all use the same an animation. In Splat ECS there is a great feature designed to help with situations just like this, and it's called <strong>prefabs</strong>.</p>
 
-<p>Before we get into the magic of prefabs, let's add a new animation to <strong>src/data/animations.json</strong> for our goo balls.</p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_011.png">
+				<source src="mov/step_011.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>The sticky baby needs to collect balls of goo to remain sticky, so let's get some goo in the game.</p>
+
+			<p>So we want to be able to add lots of items for the player to pick up, and in this tutorial they will all use the same an animation. In Splat ECS there is a great feature designed to help with situations just like this, and it's called <strong>prefabs</strong>.</p>
+
+			<p>Before we get into the magic of prefabs, let's add a new animation to <strong>src/data/animations.json</strong> for our goo balls.</p>
+
+
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 <em>"goo": [{
@@ -1378,7 +1557,7 @@ if the left button is pressed, change the player's animation name to <code>"play
     "time": 600,
     "properties": {
         "image": {
-            "name": "goo",
+            "name": "goo.png",
             "sourceX": 0,
             "sourceY": 0,
             "sourceWidth": 50,
@@ -1415,10 +1594,10 @@ if the left button is pressed, change the player's animation name to <code>"play
         "frame": 0,
         "loop": true,
         "speed": 1,
-        "name": "goo"
+        "name": "goo.png"
     },
     "image": {
-        "name": "goo",
+        "name": "goo.png",
         "destinationWidth": 13,
         "destinationHeight": 13
     },
@@ -1507,7 +1686,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 }</em>
 </code></pre>
 
-<p><img src="../step_011/screenshot_011.png" class="expand" alt="Step 11 screenshot" title="" /></p>
+<p><img src="img/screenshot_011.png" class="expand" alt="Step 11 screenshot" title="" /></p>
 
 <a name="cp11"></a>
 <div class="flexrow checkpoint">
@@ -1534,11 +1713,31 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Keeping score</h2>
 <em class="sub">Competitive gaming</em>
 
-<p>We are almost done, we have a pretty real feeling game now, but I want to show you one more thing, rendering text on the screen, and to do this we will add a score counter.</p>
 
-<p>This will be our first and only render system necessary for the tutorial. Let's delete the <strong>src/systems/renderer/sample-renderer-system.js</strong> and add a new file inside of <strong>src/systems/renderer/</strong>, let's name it <strong>draw-score.js</strong></p>
 
-<p>The contents of <strong>draw-score.js</strong> should be as follows:</p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_012.png">
+				<source src="mov/step_012.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>We are almost done, we have a pretty real feeling game now, but I want to show you one more thing, rendering text on the screen, and to do this we will add a score counter.</p>
+
+			<p>This will be our first and only render system necessary for the tutorial. Let's delete the <strong>src/systems/renderer/sample-renderer-system.js</strong> and add a new file inside of <strong>src/systems/renderer/</strong>, let's name it <strong>draw-score.js</strong></p>
+
+			<p>The contents of <strong>draw-score.js</strong> should be as follows:</p>
+
+		</div>
+	</div>
+</div>
+
+
+
+
 
 <pre><code class="javascript">
 <em>"use strict";
@@ -1626,7 +1825,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>Now if you try out the game in your browser you should be able to run around and collect all 12 balls of goo.</p>
 
-<p><img src="../step_012/screenshot_012.png" class="expand" alt="Step 12 screenshot" title="" /></p>
+<p><img src="img/screenshot_012.png" class="expand" alt="Step 12 screenshot" title="" /></p>
 
 <a name="cp12"></a>
 <div class="flexrow checkpoint">
@@ -1653,11 +1852,30 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Sound</h2>
 <em class="sub">Hearing is believing</em>
 
-<p>Sound is a huge boost to your game and adds a ton of feeling and depth to what you see and do on the screen. Sound is really easy to add in Splat ECS, but that does not mean sound is easy in games, it can often take a lot of effort to create the right sound effects, ambience, and music to make your creation feel just right.</p>
 
-<p>To start let's add a couple of sound effects I created with BFXR to <strong>src/sounds/</strong> in your game project, you can find them in the assets pack that the images were in.</p>
 
-<p>We need to add and name sounds we wish to use in the game to the <strong>src/data/sounds.json</strong> file like so:</p>
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_013.png">
+				<source src="mov/step_013.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>Sound is a huge boost to your game and adds a ton of feeling and depth to what you see and do on the screen. Sound is really easy to add in Splat ECS, but that does not mean sound is easy in games, it can often take a lot of effort to create the right sound effects, ambience, and music to make your creation feel just right.</p>
+
+			<p>To start let's add a couple of sound effects I created with BFXR to <strong>src/sounds/</strong> in your game project, you can find them in the assets pack that the images were in.</p>
+
+			<p>We need to add and name sounds we wish to use in the game to the <strong>src/data/sounds.json</strong> file like so:</p>
+
+		</div>
+	</div>
+</div>
+
+
+
 
 <pre><code class="json">
 {
@@ -1669,7 +1887,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <p>Now that sounds are available for us to use in the game it is an easy one-liner to add them in</p>
 
 <pre><code class="javascript">
-game.sounds.play("jump");
+game.sounds.play("jump.mp3");
 </code></pre>
 
 <p>The first sound would work well in the jump system <strong>src/systems/simulation/jump.js</strong>.</p>
@@ -1688,14 +1906,12 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 			for (var i = 0; i < entityCollisions.length; i++) {
 				var other = entityCollisions[i];
-				if (game.entities.get(other, "platform")) {
-					var otherPosition = game.entities.get(other, "position");
-					var position = game.entities.get(entity, "position");
-					var size = game.entities.get(entity, "size");
-					if ((position.y + size.height) <= otherPosition.y) {
-						<em>game.sounds.play("jump");</em>
-						velocity.y  = -1.2;
-					}
+				var otherPosition = game.entities.get(other, "position");
+				var position = game.entities.get(entity, "position");
+				var size = game.entities.get(entity, "size");
+				if ((position.y + size.height) <= otherPosition.y) {
+					<em>game.sounds.play("jump.mp3");</em>
+					velocity.y  = -1.2;
 				}
 			}
 		}
@@ -1722,7 +1938,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 			var other = entityCollisions[i];
 			var points = game.entities.get(other, "points");
 			if (points) {
-				<em>game.sounds.play("pickup");</em>
+				<em>game.sounds.play("pickup.mp3");</em>
 				game.entities.destroy(other);
 				game.entities.set(entity, "score", score + points);
 			}
@@ -1734,7 +1950,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 
 <p>And now when you play the game in your browser check to see if the sounds are working, and if they are congratulate yourself for completing this tutorial, and creating what might be your first of many games with Splat ECS!</p>
 
-<p><img src="../step_013/screenshot_013.png" class="expand" alt="Step 13 screenshot" title="" /></p>
+<p><img src="img/screenshot_013.png" class="expand" alt="Step 13 screenshot" title="" /></p>
 
 <a name="cp13"></a>
 <div class="flexrow checkpoint">
@@ -1761,9 +1977,27 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Adjusting the aspect ratio</h2>
 <em class="sub">Making things presentable</em>
 
-<p>You will notice that our game is stuck up in the top left corner of a full-screen black canvas. We want the game to scale depending on the browser window size so that the whole game is always in view (not cut off) and the artwork is always the correct aspect ratio.</p>
 
-<p>To do this we need to add another reference to a built in Splat ECS system called <code>match-center</code> to <strong>src/data/systems.json</strong>.</p>
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_014.png">
+				<source src="mov/step_014.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>You will notice that our game is stuck up in the top left corner of a full-screen black canvas. We want the game to scale depending on the browser window size so that the whole game is always in view (not cut off) and the artwork is always the correct aspect ratio.</p>
+
+			<p>To do this we need to add another reference to a built in Splat ECS system called <code>match-center</code> to <strong>src/data/systems.json</strong>.</p>
+
+		</div>
+	</div>
+</div>
+
+
 
 <p><strong>src/data/systems.json</strong>
 <pre><code class="json">
@@ -1787,7 +2021,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 </p>
 
 
-<p><img src="../step_014/screenshot_014.png" class="expand" alt="Step 14 screenshot" title="" /></p>
+<p><img src="img/screenshot_014.png" class="expand" alt="Step 14 screenshot" title="" /></p>
 
 <a name="cp14"></a>
 <div class="flexrow checkpoint">
@@ -1814,7 +2048,24 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <h2>Removing debugging systems</h2>
 <em class="sub">The finished product</em>
 
-<p>Removing the red outlines around entities is as simple as deleting these lines in <strong>src/data/systems.json</strong>:</p>
+
+
+<div class="flexrow">
+	<div class="col1-2">
+		<div class="module">
+			<video controls style="max-width: 100%;" poster="img/screenshot_015.png">
+				<source src="mov/step_015.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+			</video>
+		</div>
+	</div>
+	<div class="col1-2">
+		<div class="module">
+			<p>Removing the red outlines around entities is as simple as deleting these lines in <strong>src/data/systems.json</strong>:</p>
+
+		</div>
+	</div>
+</div>
+
 
 <pre><code class="json">
 <em class="remove">{
@@ -1839,7 +2090,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <p>Now when you check the game in your browser the red outlines and fps display should be gone, leaving behind your great looking game.
 You have completed the tutorial, great job!</p>
 
-<p><img src="../step_015/screenshot_015.png" class="expand" alt="Step 15 screenshot" title="" /></p>
+<p><img src="img/screenshot_015.png" class="expand" alt="Step 15 screenshot" title="" /></p>
 
 
 <a name="cp15"></a>

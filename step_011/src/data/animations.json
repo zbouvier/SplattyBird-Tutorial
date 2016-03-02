@@ -4,7 +4,7 @@
 		"time": 1,
 		"properties": {
 			"image": {
-				"name": "player-idle",
+				"name": "player-idle.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 32,
@@ -17,7 +17,7 @@
 		"time": 150,
 		"properties": {
 			"image": {
-				"name": "player-run-left",
+				"name": "player-run-left.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 128,
@@ -30,7 +30,7 @@
 		"time": 150,
 		"properties": {
 			"image": {
-				"name": "player-run-right",
+				"name": "player-run-right.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 128,
@@ -43,7 +43,7 @@
 		"time": 600,
 		"properties": {
 			"image": {
-				"name": "goo",
+				"name": "goo.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 50,

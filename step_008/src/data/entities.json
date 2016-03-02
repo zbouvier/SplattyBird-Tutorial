@@ -15,7 +15,7 @@
 			"name": "player",
 			"strokeStyle": "red",
 			"image":{
-				"name": "player-idle"
+				"name": "player-idle.png"
 			},
 			"position": {
 				"x": 100,
@@ -67,7 +67,7 @@
 				"height": 800
 			},
 			"image": {
-				"name": "sky"
+				"name": "sky.png"
 			}
 		},
 		{
@@ -83,7 +83,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"ground"
+				"name":"ground.png"
 			}
 		},
 		{
@@ -99,7 +99,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"platform"
+				"name":"platform.png"
 			}
 		},
 		{
@@ -115,7 +115,7 @@
 			},
 			"collisions": [],
 			"image":{
-				"name":"platform"
+				"name":"platform.png"
 			}
 		}
 	]

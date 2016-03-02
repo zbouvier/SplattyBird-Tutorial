@@ -196,7 +196,7 @@ To add a static image to an entity in Splat ECS you use the **image** component 
   "name": "player",
   "strokeStyle": "red",
   "image":{
-	  "name": "player-idle"
+	  "name": "player-idle.png"
   },
   ...
  }
@@ -314,7 +314,7 @@ It is a bit hard to see where the playable area ends, so lets go ahead and add a
 		"height": 800
 	},
 	"image": {
-		"name": "sky"
+		"name": "sky.png"
 	}
 }
 ...
@@ -345,7 +345,7 @@ Your player entity should now look like this:
 			"name": "player",
 			"strokeStyle": "red",
 			"image":{
-				"name": "player-idle"
+				"name": "player-idle.png"
 			},
 			"position": {
 				"x": 100,
@@ -566,7 +566,7 @@ Let's add this entity to **src/data/entities.json**:
 	},
 	"collisions": [],
 	"image":{
-		"name":"ground"
+		"name":"ground.png"
 	}
 }
 ```
@@ -708,7 +708,7 @@ To start lets add another platform in **src/data/entities.json** like so:
 	},
 	"collisions": [],
 	"image":{
-		"name":"platform"
+		"name":"platform.png"
 	}
 }
 ```
@@ -728,7 +728,7 @@ Be sure the ids of any platforms you add are unique, and add another:
 	},
 	"collisions": [],
 	"image":{
-		"name":"platform"
+		"name":"platform.png"
 	}
 }
 ```
@@ -815,7 +815,7 @@ Now it is starting to feel like a real game, lets add something else that real g
 		"time": 1,
 		"properties": {
 			"image": {
-				"name": "player-idle",
+				"name": "player-idle.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 32,
@@ -828,7 +828,7 @@ Now it is starting to feel like a real game, lets add something else that real g
 		"time": 150,
 		"properties": {
 			"image": {
-				"name": "player-run-left",
+				"name": "player-run-left.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 128,
@@ -841,7 +841,7 @@ Now it is starting to feel like a real game, lets add something else that real g
 		"time": 150,
 		"properties": {
 			"image": {
-				"name": "player-run-right",
+				"name": "player-run-right.png",
 				"sourceX": 0,
 				"sourceY": 0,
 				"sourceWidth": 128,
@@ -913,7 +913,7 @@ Now we need to replace the `"image"` component on our player with an `"animation
 	"frame": 0,
 	"loop": true,
 	"speed": 1,
-	"name": "player-idle"
+	"name": "player-idle.png"
 }
 ```
 
@@ -939,7 +939,7 @@ Before we get into the magic of prefabs, let's add a new animation to **src/data
 	"time": 600,
 	"properties": {
 		"image": {
-			"name": "goo",
+			"name": "goo.png",
 			"sourceX": 0,
 			"sourceY": 0,
 			"sourceWidth": 50,
@@ -976,10 +976,10 @@ Here is the JSON we need for the collectable goo entities
 		"frame": 0,
 		"loop": true,
 		"speed": 1,
-		"name": "goo"
+		"name": "goo.png"
 	},
 	"image": {
-		"name": "goo",
+		"name": "goo.png",
 		"destinationWidth": 13,
 		"destinationHeight": 13
 	},
@@ -1171,7 +1171,7 @@ We need to add and name sounds we wish to use in the game to the **src/data/soun
 Now that sounds are available for us to use in the game it is an easy one-liner to add them in
 
 ```JavaScript
-game.sounds.play("jump");
+game.sounds.play("jump.mp3");
 ```
 
 The first sound would work well in the jump system **src/systems/simulation/jump.js**.
@@ -1195,7 +1195,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 					var position = game.entities.get(entity, "position");
 					var size = game.entities.get(entity, "size");
 					if ((position.y + size.height) <= otherPosition.y) {
-						game.sounds.play("jump");
+						game.sounds.play("jump.mp3");
 						velocity.y  = -1.2;
 					}
 				}
@@ -1221,7 +1221,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 		for (var i = 0; i < entityCollisions.length; i++) {
 			var other = entityCollisions[i];
 			if (game.entities.get(other, "goo")) {
-				game.sounds.play("pickup");
+				game.sounds.play("pickup.mp3");
 				game.entities.destroy(other);
 				game.entities.set(entity, "score", score + 1);
 			}
