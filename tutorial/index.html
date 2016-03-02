@@ -115,11 +115,11 @@
 
 <h4> Browser</h4>
 
-<p> Since Splat ECS is for making games that run in primarily in the browser, you will need  to have a browser open to preview your game while you are working on it. We recomend <a href="http://google.com/chrome" target="_blank"> Google Chrome</a> or <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>.
+<p> Since Splat ECS is for making games that run primarily in the browser, you will need  to have a browser open to preview your game while you are working on it. We recomend <a href="http://google.com/chrome" target="_blank"> Google Chrome</a> or <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>.
 
 <h4> Text editor</h4>
 
-<p> To write the JavaScript code and JSON data that makes up your game you will need a text editor, if you don't already have a preference here are some open source recomendations:
+<p> To write the JavaScript code and JSON data that makes up your game you will need a text editor, if you don't already have a preference, here are some open source recommendations:
 	<ul>
 		<li><a href="https://atom.io/" target="_blank"> Atom</a></li>
 		<li><a href="http://brackets.io/" target="_blank">Brackets</a></li>
@@ -128,10 +128,10 @@
 
 <h4> Terminal (Command Line)</h4>
 
-<p>Splat ECS uses the Node Package Manager or NPM to handle all of it's internal modules and webpack to build and test the game, to use NPM and also the build tool you will need to use the terminal, sometimes referred to as the Command Line Interface or CLI. If you are unfammiliar with the terminal in your operating system please check out these handy resources:
+<p>Splat ECS uses the Node Package Manager (NPM) to handle all of it's internal modules, and webpack to build and test the game. To use NPM and also the build tool, you will need to use the terminal, sometimes referred to as the Command Line Interface or CLI. If you are unfammiliar with the terminal in your operating system please check out these handy resources:
 	<ul>
 		<li><a href="http://lifehacker.com/5633909/who-needs-a-mouse-learn-to-use-the-command-line-for-almost-anything" target="_blank"> LifeHacker's - A Command Line Primer for Beginners</a></li>
-		<li>For Windows users you will need to install <a href="http://www.cygwin.com/" target="_blank">Cygwin</a>, which is a free terminal emulator.</li>
+		<li>For Windows users you will need to install <a href="http://www.cygwin.com/" target="_blank">Cygwin</a>, which is a free terminal emulator</li>
 	</ul>
 </p>
 
@@ -209,7 +209,7 @@ Test that this is working and note that if the keys are not working you may need
 <h2>Understanding ECS</h2>
 <em class="sub">The foundational concepts behind Splat ECS</em>
 
-<p>Splat ECS uses an Entity Component system or ECS for short, as the name implies this is a very important part of Splat ECS. ECS is at the core and you will need to understand the ECS mindset while working on your game, but don't worry you will ease into it and it will begin to become clear to you why ECS was chosen, as it is a very powerful and organized design pattern.</p>
+<p>Splat ECS uses an Entity Component system or ECS for short, as the name implies this is a very important part of Splat ECS. ECS is at the core and you will need to understand the ECS mindset while working on your game. But don't worry, you will ease into it and it will begin to become clear to you why ECS was chosen, as it is a very powerful and organized design pattern.</p>
 
 <p>Learn more about Entity Component systems on <a href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank"> Wikipedia</a>.<p>
 
@@ -231,7 +231,7 @@ Test that this is working and note that if the keys are not working you may need
 <i class="fa fa-cogs"></i>
 <strong>Systems</strong>
 
-<p>Code that processes entities which have specific components in order to enact the behaviours those components represent.</p>
+<p>Code that processes entities which have specific components in order to enact the behaviors those components represent.</p>
 </div>
 
 
@@ -263,7 +263,7 @@ Test that this is working and note that if the keys are not working you may need
 <i class="fa fa-th"></i>
 <strong>Data-driven game development</strong>
 
-<p>Much of how the game is set up (Players, enemies, items, backgrounds, animations) is stored as data in JSON format.</p>
+<p>Much of how the game is set up (players, enemies, items, backgrounds, animations) is stored as data in JSON format.</p>
 </div>
 
 
@@ -326,13 +326,13 @@ Test that this is working and note that if the keys are not working you may need
 <p>Notice the <code>id</code> of 1, <code>name</code>, <code>strokeStyle</code>, <code>position</code>, <code>size</code>, <code>velocity</code>, <code>playerController2d</code>, <code>movement2d</code>, and <code>friction</code>. This is the player entity, it is just a bucket that holds components and has an id.</p>
 
 <p>This is our red-outlined box from before, it is a rectangle that is 100x100 and it's top left corner is drawn at x 100 and y 100 on the screen.
-Everything in our game world is based on coordinates like a graph, the top left point is x:0, y:0 af you move right the x number increases, and as you move down the y number increases.
+Everything in our game world is based on coordinates like a graph, the top left point is x:0, y:0 as you move right the x number increases, and as you move down the y number increases.
 The position, and size objects are what we call components in the ECS world, they can be added, edited, or deleted to make an entity have different properties and/or behaviours.</p>
 
 <!-- coordinates graph picture -->
 
 
-<p>The player entity is controllable with WASD or arrow keys, this works using the <code>playerController2d</code> component built into Splat ECS</p>
+<p>The player entity is controllable with WASD or arrow keys, this works using the <code>playerController2d</code> component built into Splat ECS.</p>
 <!-- elaborate ont he keyboard controls -->
 
 
@@ -342,17 +342,17 @@ The position, and size objects are what we call components in the ECS world, the
 
 <p>So we have seen entities and components so far, what about systems?
 Let's open up the <strong>systems</strong> folder and see what is inside.
-In the <strong>systems</strong> folder you will see two other folders named <strong>renderer</strong>, and <strong>simulation</strong></p>
+In the <strong>systems</strong> folder you will see two other folders named <strong>renderer</strong>, and <strong>simulation</strong>.</p>
 
 <p>These are the only two types of systems you will need in Splat ECS.
-<strong>renderer systems</strong> draw to the screen, and <strong>simulation systems</strong> do everything else.</p>
+<strong>Renderer systems</strong> draw to the screen, and <strong>simulation systems</strong> do everything else.</p>
 
 <p>Splat ECS uses the Common JS module format for all system modules you will be creating.
 Let's open the file <strong>src/systems/simulation/sample-simulation-system.js</strong>
 Inside this system we will see how we format our code in Splat ECS.
-Here you will see module.exports on line 3, this is the code to export the module for use by the game project and is vital that you wrap your code in this.</p>
+Here you will see <pre>module.exports</pre> on line 3, this is the code to export the module for use by the game project and is vital that you wrap your code in this.</p>
 
-<p>You will notice the arguments ecs and game, every chunk of system code in Splat ECS is run through the ECS so it must be included, <strong>game</strong> is everything in the data folder which becomes a large JavaScript object when the game is built.</p>
+<p>You will notice the arguments <pre>ecs</pre> and <pre>game</pre>. Every chunk of system code in Splat ECS is run through the ECS so it must be included - <pre>game</pre> is everything in the data folder which becomes a large JavaScript object when the game is built.</p>
 
 <p>This process might seem overwhelming but it will become easier with time.</p>
 
