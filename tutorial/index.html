@@ -379,10 +379,10 @@ Here you will see <pre>module.exports</pre> on line 3, this is the code to expor
 
 			<a class="btn" href="https://github.com/SplatJS/Splatformer-Tutorial/raw/master/splatformer_assets_pack.zip"><i class="fa fa-file-archive-o"></i>Splatformer Assets Pack</a>
 
-			<p> When you unzip the file and you will find two folders, images &amp; sounds, copy all of the images into your game's <strong>/src/img/</strong> and <strong>/src/sounds/</strong>.</p>
+			<p> When you unzip the file you will find two folders, images &amp; sounds, copy all of the images into your game's <strong>/src/img/</strong> and <strong>/src/sounds/</strong>.</p>
 
 			<p>First we should give the player an image, to do this we need to go into <strong>/src/data/entities.json</strong>.
-			Inside <strong>/src/data/entities.json</strong> you will see an array called <code>"main: []"</code> this refers to the main scene, in this tutorial we will only be working in one scene so all of our entities must be in "main", in future tutorials or in your own projects you can create as many scenes as you want and each can have it's own set of entities.</p>
+			Inside <strong>/src/data/entities.json</strong> you will see an array called <code>"main: []"</code> this refers to the main scene. In this tutorial we will only be working in one scene so all of our entities must be in "main". In future tutorials or in your own projects you can create as many scenes as you want and each can have it's own set of entities.</p>
 
 		</div>
 	</div>
@@ -507,7 +507,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 			<p>To add a new system we have to edit <strong>/src/data/systems.json</strong>, the trickiest thing about systems is ordering them, but we will get into that more later.</p>
 
 			<p>Systems come in two types: <strong>Renderer</strong> and <strong>Simulation</strong>.
-			Since <code>constrain-position</code>has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
+			Since <code>constrain-position</code> has to do with keeping an entity inside a rectangular area (using it's position and size) it is a <strong>Simulation</strong> system. Inside <strong>/src/data/systems.json</strong> you will see a JSON object with two named arrays inside:</p>
 		</div>
 	</div>
 </div>
@@ -559,19 +559,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 ...
 </code></pre>
 
-
-<p>Before we can add the `constrainPosition` player entity we need an entity to contain it, for this we will create a new entity in `/src/data/entities.json` beneath the player entity.</p>
-<p>Next we need to add one line to <strong>src/scripts/main-enter.js</strong>, this is a special method that will tell Splat ECS the size we want our game to be.
-<strong>src/scripts/main-enter.js</strong>
-
-<pre><code class="javascript">
-"use strict";
-
-module.exports = function(game) { // eslint-disable-line no-unused-vars
-	<em>game.scaleCanvasToFitRectangle(800,800);</em>
-};
-</code></pre>
-
+<p>Before we can add the <code>constrainPosition</code> component to the player entity, we need another entity to contain it, for this we will create a new entity in `/src/data/entities.json` beneath the player entity.</p>
 
 <pre><code class="json">
 	{
@@ -592,7 +580,15 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 	}</em>
 </code></pre>
 
-<p> Since the playable area we are defining above in id 2 is 800 by 800 px we need to make sure the game cansa is scaled to fit proportionally, to do this we need to add
+<p>Since the playable area we are defining above in <code>"id": 2</code> is 800 by 800 px, we need to make sure the game is scaled to fit proportionally in the canvas. To do this we need to add one line to <strong>src/scripts/main-enter.js</strong>, this is a special method that will tell Splat ECS the size we want our game to be.
+
+<pre><code class="javascript">
+"use strict";
+
+module.exports = function(game) { // eslint-disable-line no-unused-vars
+	<em>game.scaleCanvasToFitRectangle(800,800);</em>
+};
+</code></pre>
 
 <p>There is one more thing we need to do to make <code>constrain-position</code> work, that is tell it which entity to constrain, and which entity we want to keep it inside of, which in our case is the entity with the id 2 that we jsut created. To do this we need to revisit <strong>src/data/entities.json</strong> and add this to component and properties to the player:</p>
 
@@ -602,9 +598,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 }</em>
 </code></pre>
 
-<strong>playableArea</strong> is an invisible rectangle that can have an x, y, width and height just like an entity.</p>
-
-<p>Check the game in the browser, now you should stop at an invisible wall when you hit the edges of the 800x600 rectangle.</p>
+<p>Check the game in the browser. Now you should stop at an invisible wall when you hit the edges of the 800x800 rectangle.</p>
 
 <p><img src="img/screenshot_003.png" class="expand" alt="Step 3 screenshot" title="" /></p>
 
@@ -644,7 +638,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-		<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's take the entity with the id 2 that we just created in the last step and add a couple new components to it. Open up <strong>src/data/entities.json</strong> again and add the following:</p>
+		<p>It is a bit hard to see where the playable area ends, so let's go ahead and add a simple background image to our game. This is really easy because Splat ECS handles all the drawing of entities with images for us. Let's take the entity with the <code>"id": 2</code> that we just created in the last step and add a couple of new components to it. Open up <strong>src/data/entities.json</strong> again and add the following:</p>
 		</div>
 	</div>
 </div>
@@ -670,9 +664,9 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 ...
 </code></pre>
 
-<p>The <code>name</code> component is really just for us as developers to know what the entity we are looking at, the engine uses id. "position" is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. "size" is the size of the background, and "image" contains a property for the name we gave the background image in <strong>src/data/images.json</strong>.</p>
+<p>The <code>name</code> component is really just for us as developers to know which entity we are looking at. The engine, on the other hand, knows each entity by it's id. <code>"position"</code> is the x &amp; y coordinates of where to start drawing that entity, in this case 0,0 is the top left of the game canvas. <code>"size"</code> is the size of the background, and <code>"image"</code> contains a property for the name of the background image.</p>
 
-<p>Now we should see a stripey purple background for our game, just the way sticky baby likes it! Since the position and size are identical to the <code>playableArea</code> we set for the player entity, the player cannot move off the background image.</p>
+<p>Now we should see a background with rolling green hills, a deep blue sky, and fluffy white clouds for our game, just the way sticky baby likes it!</p>
 
 <p><img src="img/screenshot_004.png" class="expand" alt="Step 4 screenshot" title="" /></p>
 
