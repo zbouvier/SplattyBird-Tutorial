@@ -22,17 +22,15 @@
 				<a href="#gettingStarted"><li>Splat ECS Starter Project</li></a>
 				<a href="#understandingECS"><li>Understanding ECS</li></a>
 				<a href="#images"><li>Using images</li></a>
-				<a href="#keepingOnScreen"><li>Keeping the player on the screen</li></a>
-				<a href="#addingBackground"><li>Adding a background</li></a>
-				<a href="#gravity"><li>Gravity</li></a>
-				<a href="#jumping"><li>Jumping</li></a>
-				<a href="#platforms"><li>Adding platforms</li></a>
-				<a href="#morePlatforms"><li>Adding more platforms</li></a>
-				<a href="#fixJumping"><li>Fixing jumping</li></a>
-				<a href="#animations"><li>Animations</li></a>
-				<a href="#pickups"><li>Pickups!</li></a>
-				<a href="#score"><li>Keeping score</li></a>
-				<a href="#sound"><li>Sound</li></a>
+				<a href="#background"><li>Adding a Background</li></a>
+				<a href ="#flapping"><li>What Goes Up</li></a>
+				<a href ="#gravity"><li>Must Come Down</li></a>
+				<a href ="#randomization"><li>Pipe Spawning</li></a>
+				<a href ="#collisions "><li>Collision Detection and Resolution</li></a>
+				<a href="#points"><li>Point Scoring</li></a>
+				<a href ="#rotation"><li>More Bird Like</li></a>
+				<a href ="#animation"><li>Animation</li></a>
+				<a href="#sound"><li>Adding Sound</li></a>
 				<a href="#aspect"><li>Adjusting the aspect ratio</li></a>
 				<a href="#debug"><li>Removing debugging systems</li></a>
 				<a href="#publishing"><li>Sharing and publishing</li></a>
@@ -42,7 +40,7 @@
 	</div> <!-- end col1-4 -->
 <div class="col3-4" style="height: 100vh; overflow-x: scroll; position: relative;">
 <header>
-		<h2>Splatformer Tutorial</h2>
+		<h2>Splattybird Tutorial</h2>
 	<em class="sub whiteText">A brief intro to the Splat ECS Game Engine</em>
 
 </header>
@@ -89,9 +87,7 @@
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_015.png">
-				<source src="mov/step_015.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Finished Game Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -365,10 +361,7 @@ Here you will see <pre>module.exports</pre> on line 3, this is the code to expor
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_001.png">
-				<source src="mov/step_001.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
+			<!--Put Screenshot Here Step 1 -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -377,7 +370,7 @@ Here you will see <pre>module.exports</pre> on line 3, this is the code to expor
 
 			<p>First download the assets pack for this game here:</p>
 
-			<a class="btn" href="https://github.com/SplatJS/Splatformer-Tutorial/raw/master/splatformer_assets_pack.zip"><i class="fa fa-file-archive-o"></i>Splatformer Assets Pack</a>
+			<a class="btn" href="https://github.com/SplatJS/Splattybird-Tutorial/raw/master/Splattybird_assets_pack.zip"><i class="fa fa-file-archive-o"></i>Splattybird Assets Pack</a>
 
 			<p> When you unzip the file you will find two folders, images &amp; sounds, copy all of the images into your game's <strong>/src/img/</strong> and <strong>/src/sounds/</strong>.</p>
 
@@ -420,7 +413,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_001/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 1</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_001/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 1</a>
 		</div>
 	</div>
 </div>
@@ -429,11 +422,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_002.png">
-				<source src="mov/step_002.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
-
+			<!-- Put Step 2 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -471,7 +460,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_002/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 2</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_002/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 2</a>
 		</div>
 	</div>
 </div>
@@ -490,12 +479,7 @@ To add a static image to an entity in Splat ECS you use the <strong>image</stron
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_003.png">
-				<source src="mov/step_003.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
-
-
+			<!-- Put Step 3 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -612,7 +596,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_003/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 3</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_003/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 3</a>
 		</div>
 	</div>
 </div>
@@ -631,9 +615,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_004.png">
-				<source src="mov/step_004.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 4 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -680,7 +662,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_004/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 4</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_004/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 4</a>
 		</div>
 	</div>
 </div>
@@ -699,9 +681,7 @@ module.exports = function(game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_005.png">
-				<source src="mov/step_005.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 5 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -849,7 +829,7 @@ Before:
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_005/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 5</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_005/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 5</a>
 		</div>
 	</div>
 </div>
@@ -869,10 +849,7 @@ Before:
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_006.png">
-				<source src="mov/step_006.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
+			<!-- Put Step 6 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -979,7 +956,7 @@ velocity.y  = -1.2;
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_006/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 6</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_006/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 6</a>
 		</div>
 	</div>
 </div>
@@ -999,11 +976,7 @@ velocity.y  = -1.2;
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_007.png">
-				<source src="mov/step_007.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
-
+			<!-- Put Step 7 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1161,7 +1134,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_007/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 7</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_007/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 7</a>
 		</div>
 	</div>
 </div>
@@ -1181,10 +1154,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_008.png">
-				<source src="mov/step_008.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
-
+			<!-- Put Step 8 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1264,7 +1234,7 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_008/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 8</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_008/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 8</a>
 		</div>
 	</div>
 </div>
@@ -1284,9 +1254,7 @@ You might notice that the jumping in the game acts a bit weird, you can continue
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_009.png">
-				<source src="mov/step_009.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+						<!-- Put Step 9 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1350,7 +1318,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_009/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 9</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_009/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 9</a>
 		</div>
 	</div>
 </div>
@@ -1365,9 +1333,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_010.png">
-				<source src="mov/step_010.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 10 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1509,7 +1475,7 @@ if the left button is pressed, change the player's animation name to <code>"play
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_010/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 10</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_010/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 10</a>
 		</div>
 	</div>
 </div>
@@ -1526,9 +1492,7 @@ if the left button is pressed, change the player's animation name to <code>"play
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_011.png">
-				<source src="mov/step_011.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 11 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1692,7 +1656,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_011/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 11</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_011/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 11</a>
 		</div>
 	</div>
 </div>
@@ -1712,9 +1676,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_012.png">
-				<source src="mov/step_012.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+						<!-- Put Step 12 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1831,7 +1793,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_012/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 12</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_012/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 12</a>
 		</div>
 	</div>
 </div>
@@ -1851,9 +1813,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_013.png">
-				<source src="mov/step_013.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 13 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -1956,7 +1916,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_013/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 13</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_013/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 13</a>
 		</div>
 	</div>
 </div>
@@ -1976,9 +1936,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_014.png">
-				<source src="mov/step_014.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 14 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -2027,7 +1985,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_014/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 14</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_014/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 14</a>
 		</div>
 	</div>
 </div>
@@ -2047,9 +2005,7 @@ module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
 <div class="flexrow">
 	<div class="col1-2">
 		<div class="module">
-			<video controls style="max-width: 100%;" poster="img/screenshot_015.png">
-				<source src="mov/step_015.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			</video>
+			<!-- Put Step 15 Screenshot Here -->
 		</div>
 	</div>
 	<div class="col1-2">
@@ -2097,7 +2053,7 @@ You have completed the tutorial, great job!</p>
 	</div>
 	<div class="col1-2">
 		<div class="module">
-			<a href="https://github.com/SplatJS/Splatformer-Tutorial/tree/master/step_015/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 15</a>
+			<a href="https://github.com/SplatJS/Splattybird-Tutorial/tree/master/step_015/src" target="_blank" class="btn"><i class="fa fa-code"></i> view code for checkpoint 15</a>
 		</div>
 	</div>
 </div>

@@ -12,62 +12,42 @@
 		},
 		{
 			"id": 1,
+			"player": true,
 			"name": "player",
 			"strokeStyle": "red",
-			"image":{
-				"name": "player-idle.png"
-			},
 			"position": {
-				"x": 100,
+				"x": 75,
 				"y": 100
 			},
 			"size": {
-				"width": 32,
-				"height": 48
+				"width": 30,
+				"height": 40
+			},
+			"animation": {
+					"time": 0,
+					"frame": 0,
+					"loop": true,
+					"speed": 1,
+					"name": "player-flap-right-f4"
 			},
 			"velocity": {
 				"x": 0,
 				"y": 0
 			},
-			"gravity": 0.02,
 			"playerController2d": {
-				"up": "up",
-				"down": "down",
-				"left": "left",
-				"right": "right"
-			},
-			"movement2d": {
-				"upMax": -0.5,
-				"downMax": 0.5,
-				"leftMax": -0.5,
-				"rightMax": 0.5,
-				"upAccel": -0.02,
-				"downAccel": 0.02,
-				"leftAccel": -0.02,
-				"rightAccel": 0.02
+				"jump": "space"
 			},
 			"friction": {
 				"x": 0.97,
 				"y": 0.97
-			},
-			"constrainPosition": {
-				"id": 2
 			}
 		},
 		{
-			"id": 2,
-			"name": "background",
-			"position": {
-				"x": 0,
-				"y": 0
+			"id": 6,
+			"button": {
+				"script": "./scripts/startGame"
 			},
-			"size": {
-				"width": 800,
-				"height": 800
-			},
-			"image": {
-				"name": "sky.png"
+			"startOfGame": true
 			}
-		}
 	]
 }

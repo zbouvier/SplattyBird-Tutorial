@@ -1,22 +1,13 @@
 "use strict";
 
 module.exports = function(ecs, game) { // eslint-disable-line no-unused-vars
+	game.entities.registerSearch("jump",["player", "velocity"]);
 	ecs.addEach(function jump(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var velocity = game.entities.get(entity, "velocity");
-
 		if (game.inputs.buttonPressed("jump")) {
-			var entityCollisions = game.entities.get(entity, "collisions");
-
-			for (var i = 0; i < entityCollisions.length; i++) {
-				var other = entityCollisions[i];
-				var otherPosition = game.entities.get(other, "position");
-				var position = game.entities.get(entity, "position");
-				var size = game.entities.get(entity, "size");
-				if ((position.y + size.height) <= otherPosition.y) {
-					velocity.y  = -1.2;
-				}
-			}
+			velocity.y  = -0.7;
 		}
 
-	}, "playerController2d");
+	}, "jump");
+
 };

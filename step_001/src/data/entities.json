@@ -14,13 +14,6 @@
 			"id": 1,
 			"name": "player",
 			"strokeStyle": "red",
-			"animation": {
-					"time": 0,
-					"frame": 0,
-					"loop": true,
-					"speed": 1,
-					"name": "player-flap-right-f4"
-			},
 			"position": {
 				"x": 75,
 				"y": 100

@@ -1,54 +1,25 @@
 {
- "up": {
+ "jump": {
   "type": "button",
   "inputs": [
-   {
+		{
     "device": "keyboard",
-    "key": "w"
-   },
-   {
-    "device": "keyboard",
-    "key": "up"
-   }
-  ]
- },
- "down": {
-  "type": "button",
-  "inputs": [
-   {
-    "device": "keyboard",
-    "key": "s"
-   },
-   {
-    "device": "keyboard",
-    "key": "down"
-   }
-  ]
- },
- "left": {
-  "type": "button",
-  "inputs": [
-   {
-    "device": "keyboard",
-    "key": "a"
-   },
-   {
-    "device": "keyboard",
-    "key": "left"
-   }
-  ]
- },
- "right": {
-  "type": "button",
-  "inputs": [
-   {
-    "device": "keyboard",
-    "key": "d"
-   },
-   {
-    "device": "keyboard",
-    "key": "right"
-   }
-  ]
+    "key": "space"
+  },
+	{
+    "device": "mouse",
+    "key": 0
+  }
+]
+
+},
+"restart": {
+	"type": "button",
+	"inputs": [{
+	 "device": "keyboard",
+	 "key": "r"
  }
+]
+
+}
 }

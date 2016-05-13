@@ -1,42 +1,15 @@
 {
-	"player-idle": [{
-		"filmstripFrames": 1,
-		"time": 1,
-		"properties": {
-			"image": {
-				"name": "player-idle.png",
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceWidth": 32,
-				"sourceHeight": 48
-			}
-		}
-	}],
-	"player-run-left": [{
-		"filmstripFrames": 4,
-		"time": 150,
-		"properties": {
-			"image": {
-				"name": "player-run-left.png",
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceWidth": 128,
-				"sourceHeight": 48
-			}
-		}
-	}],
-	"player-run-right": [{
-		"filmstripFrames": 4,
-		"time": 150,
-		"properties": {
-			"image": {
-				"name": "player-run-right.png",
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceWidth": 128,
-				"sourceHeight": 48
-			}
-		}
-	}]
-
+	"player-flap-right-f4": [{
+    "filmstripFrames": 4,
+    "time": 100,
+    "properties": {
+        "image": {
+            "name": "player-flap-right-f4.png",
+            "sourceX": 0,
+            "sourceY": 0,
+            "sourceWidth": 168,
+            "sourceHeight": 48
+        }
+    }
+}]
 }

@@ -14,16 +14,20 @@
 			"id": 1,
 			"name": "player",
 			"strokeStyle": "red",
-			"image":{
-				"name": "player-idle.png"
-			},
 			"position": {
-				"x": 100,
+				"x": 75,
 				"y": 100
 			},
 			"size": {
-				"width": 32,
-				"height": 48
+				"width": 30,
+				"height": 40
+			},
+			"animation": {
+					"time": 0,
+					"frame": 0,
+					"loop": true,
+					"speed": 1,
+					"name": "player-flap-right-f4"
 			},
 			"velocity": {
 				"x": 0,
